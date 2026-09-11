@@ -4,7 +4,7 @@ type: software
 title: "The Miniato Scale: an ordinal severity scale for artificial intelligence incidents"
 version: "2.1"
 date-released: "2026-09-12"
-repository-code: "https://github.com/santismm/Miniato"
+repository-code: "https://github.com/santismm/miniato-scale"
 authors:
   - family-names: "Miniato Santa María Morales"
     given-names: "Santiago"
@@ -28,4 +28,4 @@ preferred-citation:
   year: 2026
   month: 9
   notes: "Preprint, version 2.1, rules pilot-0.2. Not peer-reviewed."
-  url: "https://github.com/santismm/Miniato/blob/main/paper/main.pdf"
+  url: "https://github.com/santismm/miniato-scale/blob/main/paper/main.pdf"

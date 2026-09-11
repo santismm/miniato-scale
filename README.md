@@ -70,7 +70,7 @@ El uso previsto: *"The incident was a Miniato 4."*
 
 Ver [`CITATION.cff`](CITATION.cff). Mientras no haya DOI:
 
-> Miniato Santa María Morales, S. (2026). *The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution.* Preprint v2.1, rules pilot-0.2. https://github.com/santismm/Miniato
+> Miniato Santa María Morales, S. (2026). *The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution.* Preprint v2.1, rules pilot-0.2. https://github.com/santismm/miniato-scale
 
 ## Uso de IA
 
