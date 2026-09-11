@@ -63,8 +63,11 @@ El uso previsto: *"The incident was a Miniato 4."*
 ## Estado y decisiones pendientes
 
 - No hay validación entre evaluadores ni experimento de comprensión pública. El programa está en [`docs/hoja-de-ruta.md`](docs/hoja-de-ruta.md).
-- El autor debe elegir licencia antes de enviar a arXiv (ver [`paper/README.md`](paper/README.md)).
-- Este repositorio no tiene licencia todavía. Hasta que se elija, todos los derechos quedan reservados.
+
+## Licencia
+
+- Paper y documentación (`paper/`, `docs/`, `archive/`, este README): [Creative Commons Attribution 4.0](LICENSE) (CC BY 4.0). Puedes usar, adaptar y redistribuir la escala citando al autor.
+- Código (`code/`): [MIT](code/LICENSE).
 
 ## Citar
 

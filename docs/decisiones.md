@@ -97,10 +97,11 @@ Registro de decisiones con las alternativas descartadas y el motivo. Formato bre
 **Revisión del razonamiento aportado (Claude, 12 sept 2026).** El desempate es correcto y lo suscribo. Tres matices: (1) el razonamiento incluía una quinta dimensión, "engaño/detectabilidad", y unas etiquetas de nivel (4 Severe, 5 Critical) que no forman parte de `pilot-0.2`; no se adoptan, la calibración v2 se mantiene íntegra; (2) proponía "Miniato 3" para el caso Hugging Face, pero bajo `pilot-0.2` el resultado es {2, 3} con bandera de control; (3) ninguna búsqueda hecha confirma disponibilidad de marca; eso exige consultar EUIPO, OMPI y USPTO, y sigue pendiente. Que el autor nombre la escala con su propio apellido es legítimo y tiene precedente: Torino y Palermo fueron bautizadas por sus proponentes.
 **Consecuencia.** La firma del paper pasa a "Santiago Miniato Santa María Morales" para que la genealogía del nombre sea transparente.
 
-## D16. Sin licencia hasta decisión del autor
+## D16. Licencias: CC BY 4.0 para texto, MIT para código
 
-**Decisión.** El repositorio se publica sin archivo LICENSE.
-**Motivo.** Elegir licencia es una decisión del titular. Recomendación: CC BY 4.0 para paper y documentación, MIT o Apache-2.0 para el código.
+**Decisión (12 sept 2026).** Paper, documentación y archivo bajo CC BY 4.0; código bajo MIT.
+**Alternativas.** Sin licencia (todos los derechos reservados); Apache-2.0 para el código; CC BY-SA.
+**Motivo.** Una escala que aspira a adoptarse necesita poder reutilizarse con atribución obligatoria: eso es CC BY. Apache-2.0 añade una cláusula de patentes irrelevante para un código de referencia de 200 líneas. CC BY-SA obligaría a derivados a la misma licencia y frenaría su uso en documentos institucionales.
 
 ## D17. Declarar el proceso multimodelo como parte del método
 

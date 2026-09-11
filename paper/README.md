@@ -19,6 +19,6 @@ or `pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 
 ## Before arXiv submission (author decisions)
 
-1. Choose a licence for the preprint. arXiv requires one; CC BY 4.0 is usual for a proposal meant to be adopted.
+1. Licence: CC BY 4.0 (decided 12 September 2026); select it in the arXiv submission form.
 2. Category: cs.CY (Computers and Society), cross-list cs.AI.
 3. Upload `main.tex`, `references.bib` and the generated `main.bbl` (`tectonic --keep-intermediates main.tex`).

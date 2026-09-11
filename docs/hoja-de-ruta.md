@@ -4,9 +4,9 @@
 
 - [x] Nombre de firma: "Santiago Miniato Santa María Morales" (decidido el 12 de septiembre de 2026 junto con el nombre de la escala).
 - [x] Correo de correspondencia (santismm@gmail.com) y afiliación (investigador independiente), fijados el 12 de septiembre de 2026.
-- [ ] Licencia del repositorio y del preprint. Recomendación: CC BY 4.0 para texto, MIT o Apache-2.0 para código.
+- [x] Licencias: CC BY 4.0 para paper y documentación, MIT para el código (12 de septiembre de 2026).
 - [x] Verificadas el 12 de septiembre de 2026 las cuatro fuentes de 2026 (OpenAI 21 jul y 26 ago, Hugging Face, METR) y el artículo de Ajeya Cotra; todas existen y sostienen la tabla 5.
-- [ ] Decidir si el repositorio pasa a público.
+- [x] Repositorio público: https://github.com/santismm/miniato-scale (12 de septiembre de 2026). El repo privado `Miniato` se reserva para la web.
 - [ ] Búsqueda de marca para MINIATO / MINIATO SCALE en EUIPO, OMPI y USPTO, y registro de dominios principales.
 
 ## Antes del preprint

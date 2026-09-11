@@ -5,6 +5,7 @@ title: "The Miniato Scale: an ordinal severity scale for artificial intelligence
 version: "2.1"
 date-released: "2026-09-12"
 repository-code: "https://github.com/santismm/miniato-scale"
+license: CC-BY-4.0
 authors:
   - family-names: "Miniato Santa María Morales"
     given-names: "Santiago"
