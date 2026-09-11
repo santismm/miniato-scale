@@ -3,7 +3,7 @@
 ## Decisiones del autor (bloquean el envío a arXiv)
 
 - [x] Nombre de firma: "Santiago Miniato Santa María Morales" (decidido el 12 de septiembre de 2026 junto con el nombre de la escala).
-- [ ] Correo de correspondencia y afiliación en `paper/main.tex`.
+- [x] Correo de correspondencia (santismm@gmail.com) y afiliación (investigador independiente), fijados el 12 de septiembre de 2026.
 - [ ] Licencia del repositorio y del preprint. Recomendación: CC BY 4.0 para texto, MIT o Apache-2.0 para código.
 - [ ] Verificar que las tres URL de 2026 citadas (OpenAI, Hugging Face, METR) existen y sostienen lo que la tabla 5 les atribuye.
 - [ ] Decidir si el repositorio pasa a público.

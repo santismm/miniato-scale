@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite the preprint below. Affiliation and DOI are pending."
+message: "If you use this work, please cite the preprint below. A DOI is pending."
 type: software
 title: "The Miniato Scale: an ordinal severity scale for artificial intelligence incidents"
 version: "2.1"
@@ -8,6 +8,8 @@ repository-code: "https://github.com/santismm/Miniato"
 authors:
   - family-names: "Miniato Santa María Morales"
     given-names: "Santiago"
+    email: "santismm@gmail.com"
+    affiliation: "Independent researcher"
     city: "Madrid"
     country: "ES"
 keywords:

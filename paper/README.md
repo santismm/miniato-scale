@@ -19,8 +19,7 @@ or `pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 
 ## Before arXiv submission (author decisions)
 
-1. E-mail and affiliation. Placeholder is in `main.tex`, `\author{...}` block.
-2. Verify that the three 2026 incident reports cited in Section 10 (OpenAI, Hugging Face, METR) resolve and support what Table 5 attributes to them. The author has not verified them independently and the paper says so.
-3. Choose a licence for the preprint. arXiv requires one; CC BY 4.0 is usual for a proposal meant to be adopted.
-4. Category: cs.CY (Computers and Society), cross-list cs.AI.
-5. Upload `main.tex`, `references.bib` and the generated `main.bbl` (`tectonic --keep-intermediates main.tex`).
+1. Verify that the three 2026 incident reports cited in Section 10 (OpenAI, Hugging Face, METR) resolve and support what Table 5 attributes to them. The author has not verified them independently and the paper says so.
+2. Choose a licence for the preprint. arXiv requires one; CC BY 4.0 is usual for a proposal meant to be adopted.
+3. Category: cs.CY (Computers and Society), cross-list cs.AI.
+4. Upload `main.tex`, `references.bib` and the generated `main.bbl` (`tectonic --keep-intermediates main.tex`).
