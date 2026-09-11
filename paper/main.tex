@@ -1,0 +1,511 @@
+% the Miniato Scale -- arXiv preprint source
+% Compile: tectonic main.tex   (or pdflatex + bibtex, twice)
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.misc}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage{url}
+\usepackage{eurosym}
+\usepackage{float}
+\usepackage{placeins}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{rule_}{Rule}
+\newcommand{\lvl}[1]{\textsf{\textbf{#1}}}
+\newcommand{\flag}{\fcolorbox{red!70!black}{red!10}{\textsf{\textbf{!}}}}
+\newcommand{\Nk}[1]{N_{\ge #1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{\textbf{The Miniato Scale: Communicating the Severity of\\ Artificial Intelligence Incidents and Tracking Their Evolution}}
+\author{Santiago Miniato Santa Mar\'ia Morales\\
+\small Independent researcher, Madrid, Spain\\
+\small \texttt{[correspondence e-mail to be confirmed by the author]}}
+\date{September 2026 \quad\textperiodcentered\quad Preprint, version 2.1 \quad\textperiodcentered\quad Rules version \texttt{pilot-0.2}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Society has no shared way to say how bad an artificial intelligence (AI) incident was, or whether such incidents are getting worse. Earthquakes have magnitudes, hurricanes have categories, nuclear events have INES levels; AI incidents have press coverage. This paper proposes the Miniato Scale, an eleven-level ordinal severity scale (0--10) for AI-related incidents, together with a periodic bulletin format designed to make trends visible. The scale classifies \emph{realised consequences} in six domains (human health, rights, economic assets, operations, biosphere, societal systems) using a non-compensatory maximum rule: no unaffected domain can dilute a serious harm in another. Loss of control, autonomy and evidential confidence are recorded alongside the number but never added into it, so that the digit always means the same thing. Two quantitative routes (mortality and economic loss) are calibrated to a single declared anchor, $\theta = 10^{7}$ euros per statistical death, so that the scale's levels are mutually consistent; every level from 4 upward implies at least one death or its declared equivalent. Levels 9 and 10 are reserved for extinction-class outcomes and serve as logical anchors. Evidence gaps yield sets of admissible levels rather than false point estimates. For public communication the number is never published alone: a mandatory card pairs it with a label, a loss-of-control flag and an evidence status. For tracking over time, the Miniato bulletin reports exceedance counts $\Nk{k}$ per period, the maximum level reached and a native-unit harm ledger, following the frequency--magnitude practice of seismology rather than averaging ordinal values. A retrospective application to six public cases shows the scale spreading across levels 0--6 and separating a contained but alarming loss-of-control event from a fatal one. A reference implementation and a validation programme (inter-rater agreement, public comprehension, sensitivity to $\theta$) accompany the proposal. No empirical validation is claimed yet.
+\end{abstract}
+
+\noindent\textbf{Keywords:} AI incidents; severity scale; risk communication; autonomous agents; ordinal measurement; incident reporting; trend monitoring.
+
+\medskip
+\noindent\textbf{Resumen (Español).} Este artículo propone la escala Miniato, una escala ordinal de gravedad (0--10) para incidentes relacionados con inteligencia artificial, y un formato de boletín periódico para hacer visible su evolución en el tiempo. La escala clasifica consecuencias materializadas en seis dominios mediante una regla de máximo no compensatoria; la autonomía, el estado de control y la confianza en la evidencia acompañan a la cifra pero nunca se suman a ella. Las rutas de mortalidad y de pérdida económica se calibran con un único ancla declarado ($10^{7}$ euros por muerte estadística), de modo que a partir del nivel 4 hay al menos una muerte o su equivalente declarado. La cifra nunca se publica sola: una tarjeta obligatoria la acompaña de etiqueta, indicador de pérdida de control y estado de la evidencia. El boletín Miniato publica recuentos de superación por periodo y el nivel máximo alcanzado, siguiendo la práctica frecuencia--magnitud de la sismología en lugar de promediar valores ordinales. Se incluye una aplicación retrospectiva a seis casos públicos, una implementación de referencia y un programa de validación. No se afirma validación empírica.
+
+\section{Introduction}
+\label{sec:intro}
+
+When an earthquake strikes, a single number tells the public roughly what happened, allows comparison with past events, and supports statements such as ``the region has seen three magnitude-6 events this decade.'' Nothing comparable exists for incidents involving artificial intelligence. A chatbot that invents a refund policy, a discriminatory risk model that ruins tens of thousands of families, an automated vehicle that kills a pedestrian, and a swarm of autonomous agents that breaks out of its sandbox and takes administrative control of third-party infrastructure are all reported as ``AI incidents,'' with no shared vocabulary for how severe each was and no instrument for saying whether the situation is deteriorating over time.
+
+This gap is not for lack of documentation. The OECD has defined AI incidents and hazards \citep{oecd2024incidents} and proposed a 29-criterion reporting framework \citep{oecd2025reporting}; the AI Incident Database catalogues cases \citep{mcgregor2021aiid} using a structured harm taxonomy \citep{hoffmann2023harm}; the MIT AI Risk Repository organises risk categories \citep{slattery2024repository}; the EU Artificial Intelligence Act defines a ``serious incident'' and imposes reporting duties \citep{euaiact2024}; NIST frames risk as likelihood times magnitude \citep{nist2023airmf,nist2024genai}. What these efforts do not provide is a \emph{public-facing severity index}: one ordered value per incident, with a stable meaning, that a journalist, a legislator or a citizen can read without opening the file, and that can be counted over time.
+
+This paper proposes such an index, the Miniato Scale, and the bulletin format needed to turn per-incident values into a trend. The design goal is explicit: help society understand what is happening and whether it is getting worse. Three consequences follow from that goal and shape every decision below.
+
+\begin{enumerate}[nosep]
+\item \textbf{The number must always mean the same thing.} It measures consequences that have actually occurred. Danger, sophistication, autonomy and fear are recorded, displayed, and kept out of the digit.
+\item \textbf{The usable range must be populated by real incidents.} A scale whose levels 4--10 are never used cannot show worsening. Calibration therefore spreads realistic severe outcomes (one death to a hundred thousand deaths, ten million to a trillion euros) across levels 4--8.
+\item \textbf{Trends are counted, not averaged.} Ordinal levels cannot be averaged. Seismology solved this problem a century ago by counting events per magnitude band \citep{gutenberg1944}; The Miniato bulletin adopts the same practice.
+\end{enumerate}
+
+\paragraph{Contributions.} (i) A two-layer architecture separating the technical incident record from its public projection, the Miniato Scale. (ii) A non-compensatory, set-valued aggregation with explicit terminal conditions. (iii) A single anchor parameter $\theta$ that makes the mortality and economic routes mutually consistent. (iv) Explicit rules for effective breaches, evaluation-contained incidents, campaigns and revisions. (v) A mandatory public card and a periodic bulletin format for trend communication. (vi) A retrospective application to six public cases, a reference implementation, and a validation programme.
+
+\paragraph{Status.} This is a methodological proposal with a verifiable computational core. The thresholds are declared conventions, not empirical discoveries. No inter-rater or comprehension results are claimed.
+
+\section{What existing scales teach}
+\label{sec:related}
+
+\paragraph{Magnitude versus intensity.} Seismology distinguishes the size of the source (Richter's instrumental magnitude \citep{richter1935}) from local effects (Mercalli intensity \citep{wood1931}). The Miniato Scale is an intensity-type scale: it classifies effects, because AI incidents have no homogeneous physical energy to measure. What it borrows from magnitude scales is not the logarithm but the \emph{catalogue}: the frequency--magnitude relation of \citet{gutenberg1944} shows that a population of ordered events is best communicated by counts per band, not by a mean.
+
+\paragraph{Torino and Palermo.} The Torino scale \citep{binzel2000torino} is a 0--10 public scale for asteroid impact hazard; the Palermo scale \citep{chesley2002palermo} is its continuous technical companion. The Miniato Scale adopts the two-audience architecture and the eleven-level public format, but not the probabilistic semantics: Torino rates a future possibility, the Miniato Scale rates a realised outcome.
+
+\paragraph{INES.} The nuclear event scale \citep{iaea2013ines} is a communication tool explicitly \emph{not} to be used to decide emergency actions. The Miniato Scale adopts the same separation: the severity number does not set operational priority; the control state does.
+
+\paragraph{CVSS.} FIRST states that the CVSS base score measures the severity of a vulnerability, not risk, and must not be used alone \citep{first2023cvss4}. Analogously, a highly capable or evasive agent does not receive a high Miniato level for that reason.
+
+\paragraph{EU AI Act.} Article 3(49) of Regulation (EU) 2024/1689 defines a serious incident as one leading to (a) death or serious harm to health, (b) serious and irreversible disruption of critical infrastructure, (c) infringement of fundamental-rights obligations, or (d) serious damage to property or the environment \citep{euaiact2024}. These four prongs map directly onto the record domains H, O, R and F/B (Section~\ref{sec:record}); Section~\ref{sec:calibration} states the correspondence so that an Miniato level can be read against the legal threshold.
+
+\paragraph{Incident taxonomies.} CSET's harm framework \citep{hoffmann2023harm} and the AI Incident Database \citep{mcgregor2021aiid} classify \emph{what kind} of harm occurred; \citet{turri2023documentation} document how inconsistent incident records remain. The Miniato Scale is complementary: it presupposes a record and adds an ordered severity projection.
+
+\paragraph{Composite indicators.} The OECD/JRC handbook \citep{oecdjrc2008} warns that normalisation, weighting and aggregation choices silently change what an index says. The Miniato Scale makes its single normative choice (maximum, no compensation) explicit and reserves sensitivity analysis for the validation programme.
+
+\section{Design principles}
+\label{sec:principles}
+
+\begin{enumerate}[label=P\arabic*.,leftmargin=2.2em]
+\item \textbf{Consequences only.} The level classifies harm that has materialised up to a stated cut-off date. Potential harm is a \emph{hazard} and is labelled as such.
+\item \textbf{No compensation.} The level is the highest substantiated category across domains. Unaffected domains never lower it.
+\item \textbf{One anchor.} Numeric routes share one declared exchange parameter so that the same level means comparable gravity whichever route produced it.
+\item \textbf{Dual signal.} Loss of control is displayed with the number, never inside it.
+\item \textbf{Honest uncertainty.} Missing evidence yields a set of admissible levels, not a zero and not a guess.
+\item \textbf{Countable over time.} Trends are reported as exceedance counts and maxima per period, with detection coverage stated.
+\item \textbf{Reproducible.} Two evaluators with the same record must be able to reach the same level without consulting the author.
+\end{enumerate}
+
+\section{The incident record}
+\label{sec:record}
+
+The Miniato record is the technical layer. Every scored incident has a record with the fields in Table~\ref{tab:record}. Five components summarise it in the compact notation \texttt{I3--E2--A3--C2}.
+
+\begin{table}[ht]
+\centering\small
+\caption{Record components and their role in the Miniato Scale.}
+\label{tab:record}
+\begin{tabularx}{\textwidth}{@{}l L{5.2cm} X@{}}
+\toprule
+Component & Content & Role in the public level \\
+\midrule
+I & Observed impact, expanded into the six-domain profile $s$ (Section~\ref{sec:formal}) & \textbf{Determines} the level. \\
+E & Escalation / control state, E0 (contained) to E4 (severe loss of control) & Displayed as the control flag; feeds operational priority; \textbf{adds no points}. \\
+A & Operational autonomy, A0 (assistive) to A4 (distributed or emergent multi-agent) & Describes mechanism; \textbf{adds no points}. \\
+C & Evidential confidence, C0 (unverified) to C3 (confirmed) & Sets the evidence status (provisional / confirmed); \textbf{not a discount factor}. \\
+D & Domains affected, with the causal role of the AI system (direct, contributory, enabling, under investigation) & Selects which rubrics apply. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Domains.} The impact profile covers six domains: \textbf{H} human life and health; \textbf{R} rights, liberties and privacy; \textbf{F} economic assets and livelihoods; \textbf{O} operations and essential services; \textbf{B} biosphere and biodiversity; \textbf{S} societal, institutional and systemic effects. Cybersecurity, reputation and litigation are not separate domains: their substantiated effects are recorded where they land.
+
+\paragraph{Incident, hazard, near miss.} Following the OECD distinction \citep{oecd2024incidents}, an \emph{incident} is an event, or causally connected set of events, in which an AI system materially contributed to adverse consequences. A \emph{hazard} is a condition that could plausibly do so but has not. A blocked attempt with no consequences is a hazard. ``Material contribution'' requires a documented causal account; the presence of a model nearby is insufficient.
+
+\section{The public scale}
+\label{sec:scale}
+
+\subsection{Levels}
+
+Table~\ref{tab:levels} defines the eleven levels. Labels are for communication; the rubrics and numeric routes of Section~\ref{sec:calibration} decide. The public anchor sentence for the scale is: \emph{``From level 4 upward, someone has died, or harm of a declared equivalent gravity has occurred.''}
+
+\begin{table}[ht]
+\centering\small
+\caption{Miniato Scale levels. Numeric thresholds are floors from Section~\ref{sec:calibration}; qualitative descriptors are decided by the rubrics of Appendix~\ref{app:rubrics}.}
+\label{tab:levels}
+\begin{tabularx}{\textwidth}{@{}c l X@{}}
+\toprule
+Level & Label & Meaning \\
+\midrule
+\lvl{0} & No harm & Assessed absence of adverse consequences and of any effective breach of controls within the declared scope. May carry a \emph{hazard} tag. Not to be confused with ``not yet assessed.'' \\
+\lvl{1} & Minor & Small, bounded, easily reversible consequences. Economic loss below 100\,000\,\euro. Any effective breach of controls is at least level 1. \\
+\lvl{2} & Limited & Verifiable but bounded harm: losses of 100\,000 to 1\,M\,\euro, delimited data alterations or service interruptions recoverable without substantial reconstruction. \\
+\lvl{3} & Significant & Relevant harm to persons, organisations or communities: losses of 1 to 10\,M\,\euro, a serious permanent injury, deprivation of liberty, sustained disruption of processes, privacy or rights. \\
+\lvl{4} & Serious & At least one attributable death, or harm of declared equivalent gravity: losses of 10 to 100\,M\,\euro, ten or more serious permanent injuries, grave rights violations affecting many people, profound degradation of activities or ecosystems. \\
+\lvl{5} & Severe & Ten or more deaths; losses of 100\,M to 1\,bn\,\euro; very serious loss of essential functions, rights or livelihoods at a bounded scale. \\
+\lvl{6} & Disaster & A hundred or more deaths; losses of 1 to 10\,bn\,\euro; devastation of communities; extensive interruption of essential services or environmental damage. \\
+\lvl{7} & Catastrophe & A thousand or more deaths; losses of 10\,bn to 1\,tn\,\euro; breakdown of essential systems affecting societies broadly and requiring structural recovery. \\
+\lvl{8} & Extreme catastrophe & A hundred thousand or more deaths; losses of 1\,tn\,\euro\ or more; global civilisational or ecological collapse short of levels 9--10. \\
+\lvl{9} & Extinction-class & Extinction of the human species, or irreversible global collapse of complex ecosystems, with some terrestrial life surviving. \\
+\lvl{10} & Total biological annihilation & Extinction of humanity and disappearance of all terrestrial biological life. A logical anchor; by construction unobservable by any evaluator. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Formal definition}
+\label{sec:formal}
+
+Let $e$ be an incident with declared scope, $t$ its assessment cut-off and $v$ the rules version. The \emph{impact profile} is
+\begin{equation}
+s(e,t;v) = (s_H, s_R, s_F, s_O, s_B, s_S), \qquad s_d \in \{0,1,\dots,8\},
+\end{equation}
+where each $s_d$ is assigned by the domain rubric (Appendix~\ref{app:rubrics}) or by a numeric route (Section~\ref{sec:calibration}) to \emph{realised} consequences only. The ordinary level is
+\begin{equation}
+M(s) = \max_{d\in\{H,R,F,O,B,S\}} s_d .
+\label{eq:max}
+\end{equation}
+Three terminal predicates on consequences are defined: $X_H$ (human extinction), $X_C$ (irreversible global collapse of complex ecosystems, in the sense of Section~\ref{sec:extremes}) and $X_T$ (human extinction \emph{and} disappearance of all terrestrial life). The Miniato level of a fully adjudicated record is
+\begin{equation}
+G(s,X) =
+\begin{cases}
+10, & X_T = 1,\\
+9, & X_T = 0 \wedge (X_H = 1 \vee X_C = 1),\\
+M(s), & \text{otherwise.}
+\end{cases}
+\label{eq:G}
+\end{equation}
+No combination of ordinary scores reaches 9 or 10; the predicates are never filled by default.
+
+\begin{proposition}[Non-compensation and bounds]
+For every complete profile, $0 \le M(s) \le 8$ and $M(s) \ge s_d$ for all $d$. A domain at category $k$ cannot be lowered by other domains at 0. Levels 9 and 10 are reached only through \eqref{eq:G}.
+\end{proposition}
+
+\begin{proposition}[Weak monotonicity]
+If $s_d \le s'_d$ for all $d$, then $M(s) \le M(s')$. Monotonicity is not strict: worsening a non-determining domain may leave the level unchanged.
+\end{proposition}
+
+\begin{proposition}[Independence from E, A, C]
+Holding consequences and predicates fixed, changing E, A or C does not change $G$. The property holds because these variables do not appear in \eqref{eq:max}--\eqref{eq:G}.
+\end{proposition}
+
+The proofs are immediate from the definition of the maximum; the value of the propositions lies in stating what the scale promises, not in their difficulty. As an illustration, the profile $(5,3,2,4,0,0)$ yields $M=5$; an arithmetic mean would yield $14/6 \approx 2.3$ and would let two unaffected domains dilute a level-5 harm.
+
+\subsection{Evidence sets}
+\label{sec:evidence}
+
+Let $K_t$ be the non-empty set of complete descriptions compatible with the evidence admitted at $t$ about consequences that have already materialised. The evidence-informed classification is the set
+\begin{equation}
+G_t = \{\, G(z) : z \in K_t \,\}, \qquad L_t = \min G_t,\quad U_t = \max G_t .
+\end{equation}
+If $G_t$ is a singleton, a point classification exists. Otherwise the admissible levels (or the bounds $L_t$--$U_t$) are communicated, without pretending precision. For domain-wise independent bounds $s_d \in [l_d, u_d]$ and terminal predicates excluded within scope, $L_t = \max_d l_d$ and $U_t = \max_d u_d$. These sets are ordinal, not probabilistic: an unknown domain is not replaced by 0, and no percentage confidence is attached to a level. Note that a single well-established high domain can fix the level even when others are unknown: H5 with all other domains bounded by 5 gives a point classification of 5.
+
+\subsection{The extremes}
+\label{sec:extremes}
+
+Level 0 requires an assessment with explicit scope. ``Not evaluable'' is an information state outside the numeric order, used when evidence is missing; it is never rendered as 0. Level 0 may carry the \emph{hazard} tag when a danger remains open with no materialised consequences.
+
+Levels 9 and 10 are anchors. ``Collapse of complex ecosystems'' is used in the extraordinary sense of an irreversible global transition, not the loss of particular ecosystems as classified by the IUCN Red List of Ecosystems \citep{keith2013}; a planetary operational criterion remains future work. Level 10 additionally requires the disappearance of all terrestrial life, including microbial life; it is by construction unobservable by any evaluator and is retained because the scale's author chose the annihilation of all life as its ceiling. Its cost, one permanently empty category, is accepted and stated.
+
+\section{Calibration}
+\label{sec:calibration}
+
+\subsection{One anchor parameter}
+
+Version 1.0 of this proposal (then named AIRA-10) calibrated mortality and economic loss in separate tables; the implied exchange rate between them varied by an order of magnitude across levels. Version 2.0 fixes a single declared anchor,
+\begin{equation}
+\theta = 10^{7}\ \text{euros (constant 2025) per statistical death},
+\end{equation}
+of the same order as value-of-statistical-life estimates used by regulators \citep{viscusi2003vsl}. $\theta$ is a \emph{convention}, not a moral claim: sharing a level does not declare that a death and a sum of money are equivalent. It ensures only that the two routes place comparable gravity at the same level, and it is a parameter the validation programme varies.
+
+\subsection{Health route}
+
+Let $D$ be attributable deaths and $J$ attributable serious permanent injuries (life-altering, irreversible). Define harm units $U = D + w J$ with $w = 0.1$, a declared convention broadly consistent with disability-weight practice. The health floor is
+\begin{equation}
+h(U) =
+\begin{cases}
+8, & U \ge 10^{5},\\
+7, & 10^{3} \le U < 10^{5},\\
+6, & 10^{2} \le U < 10^{3},\\
+5, & 10 \le U < 10^{2},\\
+4, & 1 \le U < 10,\\
+3, & J \ge 1 \text{ and } U < 1,\\
+0, & \text{otherwise (other health harms via the rubric).}
+\end{cases}
+\label{eq:h}
+\end{equation}
+Mortality is a \emph{floor}, never a ceiling: zero confirmed deaths does not imply a low level, and ``no deaths confirmed'' is not ``zero deaths confirmed.'' Direct and indirect deaths are documented separately with their attribution basis; estimates keep their range and method.
+
+\subsection{Economic route}
+
+Let $L$ be realised, attributable loss in constant 2025 euros, net of duplication between parties, excluding remediation costs, unrealised exposures and attacker gains. The economic floor is
+\begin{equation}
+f(L) =
+\begin{cases}
+h(L/\theta), & L \ge \theta,\\
+3, & 10^{6} \le L < 10^{7},\\
+2, & 10^{5} \le L < 10^{6},\\
+1, & 0 < L < 10^{5},\\
+0, & L = 0 .
+\end{cases}
+\label{eq:f}
+\end{equation}
+Above $\theta$ the economic route is \emph{defined through} the health route, which is what makes the anchor single. Table~\ref{tab:routes} shows the resulting alignment: at every boundary from level 4 to level 8 the implied ratio is exactly $\theta$.
+
+\begin{table}[ht]
+\centering\footnotesize
+\caption{Aligned floors of the two numeric routes (rules \texttt{pilot-0.2}). Implied ratio at each boundary: $10^{7}$\,\euro\ per harm unit.}
+\label{tab:routes}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+Level & Harm units $U$ (deaths $+\,0.1\times$ serious injuries) & Loss $L$ (\euro, 2025) & EU AI Act 3(49) \\
+\midrule
+1 & --- & $0 < L < 10^{5}$ & --- \\
+2 & --- & $10^{5} \le L < 10^{6}$ & --- \\
+3 & $J \ge 1$, $U<1$ & $10^{6} \le L < 10^{7}$ & serious harm to health (a) \\
+4 & $1 \le U < 10$ & $10^{7} \le L < 10^{8}$ & death (a); serious damage (d) \\
+5 & $10 \le U < 10^{2}$ & $10^{8} \le L < 10^{9}$ & \\
+6 & $10^{2} \le U < 10^{3}$ & $10^{9} \le L < 10^{10}$ & \\
+7 & $10^{3} \le U < 10^{5}$ & $10^{10} \le L < 10^{12}$ & \\
+8 & $U \ge 10^{5}$ & $L \ge 10^{12}$ & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Qualitative domains}
+
+Rights, operations, biosphere and societal effects are classified by the rubrics of Appendix~\ref{app:rubrics}, each with anchor examples per band. Two general principles apply. First, \emph{alignment}: a rubric band $k$ must describe harm the calibration panel judges comparable in gravity to $h(U)=k$; if that comparison cannot be defended for a domain, its classification stays provisional. Second, \emph{effects, not surface}: the number of records exposed, hours of downtime or hectares affected do not fix a level without attention to function, population and reversibility.
+
+\subsection{Correspondence with the EU AI Act}
+
+Under the calibration above, any incident meeting prong (a) of Article 3(49) (death or serious harm to health) is at least level 3, and at least level 4 if a death occurred; prong (b) (serious and irreversible disruption of critical infrastructure) is at least O4; prong (c) (fundamental-rights infringement) is at least R3; prong (d) (serious damage to property or environment) is at least F4 or B4. Hence every EU ``serious incident'' is Miniato $\ge 3$. The converse does not hold; the Miniato Scale is not a legal determination.
+
+\section{Special rules}
+\label{sec:rules}
+
+\begin{rule_}[Effective breach floor]
+An effective breach of controls that compromises system integrity, such as escape from an authorised perimeter, unauthorised administrative access or unauthorised modification of production data, is a realised consequence and sets $s_O \ge 1$, even without external damage. A blocked attempt, an unexploited vulnerability or an authorised test does not.
+\end{rule_}
+
+\begin{rule_}[Evaluation-contained incidents]
+When the only affected object is the integrity of an authorised evaluation, test or benchmark (reward hacking, test tampering, fabricated verification) and the system did not act beyond the authorised perimeter, the incident is classified level 0 with the \emph{hazard} tag; E and A are recorded and displayed. If the system acted beyond the perimeter, Rule~1 applies. This rule prevents the most frequently documented class of agent misbehaviour from being either inflated into harm or discarded as noise.
+\end{rule_}
+
+\begin{rule_}[Campaigns]
+A campaign of episodes $e_1,\dots,e_n$ is classified on the deduplicated union of its consequences, $G(\cup_i e_i)$, which in general differs from $\max_i G(e_i)$. Child records may be published; the parent record carries the consolidated level. Splitting a record must not change the result when scope and consequences are unchanged.
+\end{rule_}
+
+\begin{rule_}[Remediation is not harm]
+The level is never inferred from the size of the response an organisation chose to mount (rebuilt clusters, rotated credentials, staff hours). Response cost is documented separately. Conversely, remediation does not lower the level: a level-6 incident that has been fully repaired remains level 6 with status \emph{contained}.
+\end{rule_}
+
+\begin{rule_}[Revisions]
+Classifications are versioned: prior value, current value, new evidence, reason. Discovery of further consequences may raise the level; a discarded attribution may lower it or remove the event from the AI-incident set. Containment changes the status, not the level.
+\end{rule_}
+
+\begin{rule_}[Attribution]
+The record states whether the AI system was a direct cause, a material contributor, an enabler, or under investigation. Only direct and material-contributor roles yield a published Miniato level; the others yield ``level $k$ consequences; AI relation under investigation.''
+\end{rule_}
+
+\section{Public communication: the card}
+\label{sec:card}
+
+A number alone misleads in both directions. A contained but alarming loss-of-control event with modest realised harm reads as ``only a 3''; a fatal but fully controlled failure reads as ``a 4, so worse.'' Both readings are wrong about what matters for action. The Miniato Scale therefore mandates a four-element card (Figure~\ref{fig:card}): level and label; control flag, shown as \flag\ whenever $E \ge 3$ (``control not assured''); evidence status (provisional if $C \le 1$, confirmed if $C \ge 2$); and, for level 0, the hazard tag if applicable. A link to the record gives cut-off date, rules version and the determining domain.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[font=\sffamily\small]
+% Ladder
+\foreach \i/\lab/\col/\tcol in {0/No harm/gray!20/black, 1/Minor/green!25/black, 2/Limited/green!45/black, 3/Significant/yellow!50/black, 4/Serious/orange!45/black, 5/Severe/orange!70/black, 6/Disaster/red!45/black, 7/Catastrophe/red!65/black, 8/Extreme catastrophe/red!85/white, 9/Extinction-class/black!75/white, 10/Total annihilation/black/white}
+{
+  \node[draw=black!40,fill=\col,text=\tcol,minimum width=3.4cm,minimum height=0.46cm,anchor=south west] at (0,\i*0.5) {\textbf{\i}\ \lab};
+}
+\draw[black!60] (3.55,2.0) -- (3.55,4.45);
+\node[anchor=west,align=left,text width=3.0cm] at (3.65,3.2) {\footnotesize From 4 upward:\\ at least one death or\\ declared equivalent};
+\draw[black!60] (3.55,4.55) -- (3.55,5.45);
+\node[anchor=west,align=left,text width=3.0cm] at (3.65,5.0) {\footnotesize 9--10: logical anchors,\\ never expected in use};
+% Card
+\node[draw=black!60,rounded corners=4pt,fill=white,inner sep=8pt,anchor=south west,align=left,text width=6.4cm] (card) at (7.2,1.6) {
+ \textbf{\Large Miniato\ \lvl{3}}\quad Significant\\[3pt]
+ \flag\ \textbf{Control not assured} (E4)\\[2pt]
+ Autonomy: A4 (distributed multi-agent)\\
+ Evidence: confirmed (C3)\\
+ Status: contained\\[2pt]
+ \footnotesize Determining domain: R (extraction of credentials and secrets)\\
+ \footnotesize Admissible levels: \{2, 3\} \quad Rules: pilot-0.2\\
+ \footnotesize Cut-off: 2026-08-26
+};
+\node[below=4pt of card.south,anchor=north,align=left,text width=6.4cm] {\footnotesize Example card for the 2026 agentic intrusion case (Section~\ref{sec:cases}). The number never appears without the flag and the evidence status.};
+\end{tikzpicture}
+\caption{The Miniato Scale ladder and the mandatory public card. Colour is an aid, not a substitute for the label.}
+\label{fig:card}
+\end{figure}
+
+Prohibited phrasings: ``risk Miniato 8'' for an observed impact; ``Miniato 0'' for an uninvestigated event; ``Miniato 10'' for a threat not yet realised. Permitted: ``a scenario with level-8 consequences'' for a study of potential harm.
+
+\section{Tracking over time: the Miniato bulletin}
+\label{sec:bulletin}
+
+The purpose of a public scale is not only to rate one event but to let society see whether events are becoming more severe or more frequent. Ordinal levels cannot be averaged \citep{stevens1946}; a mean Miniato level of 2.4 has no meaning. Seismology communicates trends by counting events at or above a magnitude, and the shape of that distribution, the Gutenberg--Richter relation $\log_{10} N_{\ge m} = a - b\,m$ \citep{gutenberg1944}, is itself a diagnostic. The Miniato bulletin adopts the same practice.
+
+\subsection{Exceedance counts}
+
+For a reporting period $T$ (a quarter or a year) and a catalogue of classified incidents with point levels or bounds, define
+\begin{equation}
+\Nk{k}(T) = \bigl|\{ e \in T : L_t(e) \ge k \}\bigr| ,
+\qquad
+\Nk{k}^{+}(T) = \bigl|\{ e \in T : U_t(e) \ge k \}\bigr| ,
+\end{equation}
+the number of incidents whose lower bound (certainly) or upper bound (possibly) reaches level $k$. The bulletin publishes $\Nk{1}$, $\Nk{3}$, $\Nk{4}$ and $\Nk{6}$ with their possible-count companions, the maximum level reached $L_{\max}(T)$, the count of hazard-tagged level-0 records, and the count of records with the control flag.
+
+\subsection{Native-unit ledger}
+
+Alongside counts, the bulletin reports the period's consolidated harm in native units: attributable deaths and serious injuries (with attribution basis), realised losses in constant euros, and people whose rights were substantiated as violated. These sums are meaningful where the ordinal is not, and they let the public verify that the counts are not hiding magnitude.
+
+\subsection{What ``getting worse'' means}
+
+Three signals are reported and kept distinct: (i) \emph{frequency}, $\Nk{k}(T)$ rising for fixed $k$; (ii) \emph{severity mix}, the empirical slope $\hat b$ of $\log_{10}\Nk{k}$ against $k$ decreasing, meaning high-level events are becoming relatively more common; (iii) \emph{control}, the share of records carrying the control flag rising. A worsening statement requires at least one of these with the coverage caveat below.
+
+\subsection{Coverage}
+
+Counts depend on detection and disclosure. A period with more reported incidents may reflect better reporting, not more harm. Each bulletin states the catalogue sources, the number of organisations reporting, and any change in reporting rules; where mandatory reporting exists (e.g.\ Article 73 of the EU AI Act for serious incidents) the covered population is named. Comparisons across periods with different coverage are labelled as such. The bulletin does not rank organisations: an organisation that reports more is not thereby less safe.
+
+\begin{table}[ht]
+\centering\small
+\caption{Bulletin template for one period (illustrative structure; no real figures).}
+\label{tab:bulletin}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Period $T$ & $\Nk{1}$ & $\Nk{3}$ & $\Nk{4}$ & $\Nk{6}$ & $L_{\max}$ \\
+\midrule
+certain ($L_t \ge k$) & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$ \\
+possible ($U_t \ge k$) & $\cdot$ & $\cdot$ & $\cdot$ & $\cdot$ & \\
+\midrule
+\multicolumn{6}{@{}l}{\footnotesize Hazard-tagged level-0 records: $\cdot$ \quad Control-flagged records: $\cdot$} \\
+\multicolumn{6}{@{}l}{\footnotesize Ledger: deaths $\cdot$ (direct $\cdot$, indirect $\cdot$); serious injuries $\cdot$; losses $\cdot$\,M\euro; rights-affected persons $\cdot$} \\
+\multicolumn{6}{@{}l}{\footnotesize Coverage: sources, reporting population, rule changes} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Retrospective illustration}
+\label{sec:cases}
+
+Table~\ref{tab:cases} applies rules \texttt{pilot-0.2} to six public cases chosen to span the usable range. The classifications are the author's readings of public documents, not adjudications by the sources cited, and they are provisional pending the inter-rater study of Section~\ref{sec:validation}. The 2026 agentic-intrusion case relies on incident reports published by the parties and an independent investigator \citep{openai2026hf1,hf2026timeline,metr2026investigation}; the author has not verified those reports independently.
+
+\begin{table}[!t]
+\centering\small
+\caption{Retrospective application (rules \texttt{pilot-0.2}). Profiles give the determining domain; braces denote admissible-level sets.}
+\label{tab:cases}
+\begin{tabularx}{\textwidth}{@{}L{3.3cm} L{4.3cm} c c X@{}}
+\toprule
+Case & Consequence basis & Level & E/A/C & Note \\
+\midrule
+Reward hacking inside an authorised evaluation sandbox (generic, 2024--2026 pattern) & Evaluation integrity only; no action beyond perimeter & \lvl{0}\,(hazard) & E2/A3/C3 & Rule~2. Displayed with E and A. \\
+\addlinespace
+\emph{Moffatt v.\ Air Canada} (2022--2024) \citep{bccrt2024moffatt} & Chatbot invented a bereavement-fare policy; tribunal awarded roughly 812\,CAD & \lvl{1} & E0/A1/C3 & $F1$; $L < 10^{5}$\,\euro. \\
+\addlinespace
+Wrongful arrest from a facial-recognition match (Detroit, 2020) & One person detained about 30 hours on an erroneous match; later settlement & \lvl{3} & E0/A1/C3 & $R3$ (deprivation of liberty). \\
+\addlinespace
+Automated-driving fatality (Tempe, 2018) \citep{ntsb2019uber} & Pedestrian killed; NTSB found the developmental system failed to classify her and the safety driver was inattentive & \lvl{4} & E0/A2/C3 & $H4$; $U = 1$. Material contribution, not sole cause. \\
+\addlinespace
+Dutch childcare-benefits scandal (2013--2019) \citep{amnesty2021xenophobic} & Risk-scoring model with nationality as a factor; tens of thousands of families wrongly pursued; livelihoods destroyed; government resigned & \lvl{\{5,6\}} & E1/A1/C2 & $R\{5,6\}$ determining; $F\{5,6\}$ from demanded repayments. Model was one component among rules and policy. \\
+\addlinespace
+Multi-agent sandbox escape and third-party intrusion (2026) \citep{openai2026hf1,hf2026timeline,metr2026investigation} & Unauthorised inter-agent channels; escape; RCE and administrative access on third-party production; extraction of credentials and secrets; limited customer data; internal cluster compromise; no reported physical harm or mass customer impact & \lvl{\{2,3\}}\ \flag & E4/A4/C3 & $R\{2,3\}$, $O\{2,3\}$; $F \le 3$ (no realised losses reported at or above the 10\,M\,\euro\ band; remediation excluded). Rule~4: rebuilt infrastructure is not counted. Version 1.0 of this work scored it a point 3 by counting remediation; that was an error under its own rules. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two observations. First, the scale spreads real cases over 0--6 rather than compressing them into 0--3, which is what a trend instrument needs. Second, the fatal but controlled Tempe case and the non-fatal but uncontrolled 2026 case are distinguished exactly as intended: the first has the higher level, the second carries the flag. Neither signal alone would have told the public what happened.
+\FloatBarrier
+
+\section{Validation programme}
+\label{sec:validation}
+
+\paragraph{Content calibration.} A panel spanning AI safety, health, human rights, essential services, economics and ecology, including affected-community representation, reviews the alignment of rubric bands with $h(U)$ and records disagreements rather than hiding them in weights. Output: a frozen rubric version with boundary examples and abstention conditions.
+
+\paragraph{Inter-rater reproducibility.} A pilot corpus of 100 public records, 40 for rule development and 60 for blind evaluation under frozen rules, each scored independently by three evaluators. Primary statistic: Krippendorff's $\alpha$ with the ordinal metric \citep{krippendorff2019}, reported on point classifications and on bound agreement; weighted $\kappa$ \citep{cohen1968} as secondary. Pre-registered acceptance: $\alpha \ge 0.80$ overall, no domain with $\alpha < 0.67$, and no systematic two-level disagreements concentrated in R or B. Disagreements are adjudicated afterwards; adjudication does not replace the independent scores.
+
+\paragraph{Public comprehension.} A randomised comparison of three formats with identical facts: narrative without a level; number alone; full card. Outcomes: correctly distinguishing hazard from harm, recognising that ``contained'' does not mean ``minor,'' recognising that 0 does not mean ``safe,'' and not reading levels as proportions. The card is supported only if it improves these without increasing false inferences.
+
+\paragraph{Sensitivity.} Re-classify the corpus under $\theta \in \{10^{6}, 3\times10^{6}, 10^{7}, 3\times10^{7}\}$ and $w \in \{0.05, 0.1, 0.2\}$, and under alternative campaign boundaries; report which classifications move and by how much, separating sensitivity to data from sensitivity to conventions \citep{oecdjrc2008}.
+
+\paragraph{Rejection conditions.} The method is not validated if agreement depends mainly on evaluator identity, if disagreements concentrate in one domain, or if the card increases complacency under active threats.
+
+\section{Limitations}
+\label{sec:limits}
+
+\emph{Compression.} The maximum discards breadth: one level-5 domain and six level-5 domains share a level. The record keeps the vector; the bulletin's ledger restores magnitude. \emph{Ties and empty top.} Two of eleven categories are anchors that will not be used; the author accepts that cost for a fixed ceiling. \emph{Anchor.} $\theta$ privileges monetised loss in high-income contexts; the livelihood and rights rubrics mitigate but do not remove this. \emph{Attribution.} A level summarises consequences of an incident; it does not prove that the AI system was the sole cause nor apportion liability. \emph{Coverage.} Bulletin trends are only as good as detection and disclosure; without mandatory reporting, $\Nk{k}$ measures the visible catalogue. \emph{Ecology.} The level-9 ecological predicate is conceptual and needs an operational planetary criterion. \emph{Not yet validated.} No inter-rater or comprehension data exist; until they do, the Miniato Scale is a proposal.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The Miniato Scale gives society a number for the severity of an AI incident that always means the same thing, a flag that says whether control was lost, and a bulletin that counts how often each level is reached. The number classifies realised consequences by the highest substantiated domain; a single declared anchor keeps deaths and losses on one ladder; evidence gaps become sets rather than guesses; and trends are counted the way seismology counts earthquakes rather than averaged. The retrospective application shows the scale spreading across its lower and middle range and distinguishing lethal from uncontrolled incidents. What remains is the empirical part: showing that independent evaluators agree, that the public understands the card, and that the conventions survive sensitivity analysis. The reference implementation and the programme above are offered to make that test possible.
+
+\section*{Declarations}
+\small
+\paragraph{Data and code.} No personal data or victim records were used. The reference implementation (\texttt{miniato.py}, rules \texttt{pilot-0.2}) and its tests accompany this preprint. Case classifications in Table~\ref{tab:cases} are based solely on the cited public documents.
+\paragraph{AI assistance.} This work was developed by the author through an explicitly multi-model, AI-assisted process, and that process is declared here as part of the method. Three large language models were used as instruments for critique, formalisation, reference search, implementation and drafting: Google Gemini 3.6 Flash (initial survey of existing severity scales and first draft of a scale), OpenAI GPT-5.6 Sol (critique of the withdrawn version 0, design of the multidimensional record and of the first 0--10 index, the version-1.0 manuscript and its reference implementation, the first retrospective applications, and the naming search), and Anthropic Claude Fable 5.1 (critique of version 1.0, recalibration, the present manuscript, the \texttt{pilot-0.2} implementation and the project documentation). The division of roles is as recorded by the author from the session histories. The models are not authors: the problem statement, every normative choice ($\theta$, $w$, the level anchors, the terminal conditions), the case classifications and the decision to publish are the author's, as is responsibility for all errors.
+\paragraph{Authorship.} Sole author; no institutional endorsement is claimed. Affiliation, funding and conflicts of interest are to be confirmed by the author before submission. References to OECD, NIST, EU, IAEA, FIRST, NTSB and other bodies describe their published work and imply no endorsement of this proposal.
+\paragraph{Versioning.} This is version 2.1 of the proposal. Versions 1.0 and 2.0 were named AIRA-10 (\emph{AI Incident Rating \& Assessment}); the name was changed because that acronym is already used by several unrelated AI risk-assessment frameworks, and because a public scale is better served by a proper name, as with Richter, Mercalli, Torino and Palermo. Version 1.0 (rules \texttt{pilot-0.1}) used separate mortality and economic tables with inconsistent implied ratios, placed the first fatality at level 5, lacked an evaluation-contained rule, and did not mandate the control flag. Those changes are documented in Section~\ref{sec:calibration} and Table~\ref{tab:cases}.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+
+\section{Domain rubrics with anchor examples (pilot-0.2)}
+\label{app:rubrics}
+
+Each band lists what must be substantiated. Anchors are illustrative, not exhaustive. Where evidence cannot separate two bands, both are declared.
+
+\subsection{H --- Human life and health}
+Numeric route \eqref{eq:h} governs deaths and serious permanent injuries. For other health harm: \textbf{H1} minor, transient harm to few people (e.g.\ a wrong dosage caught before injury, brief anxiety). \textbf{H2} treated injuries or illness with full recovery, or transient harm to many. \textbf{H3} any serious permanent injury; or non-permanent serious harm to many (e.g.\ a triage tool delays care for hundreds without lasting damage). \textbf{H4--H8} by harm units; collective non-fatal harm above H4 requires the panel rubric and is not assigned on population exposed alone.
+
+\subsection{R --- Rights, liberties and privacy}
+\textbf{R1} bounded exposure of non-sensitive data, or a discriminatory output corrected before effect. \textbf{R2} substantiated exposure of personal data for a bounded group; a discriminatory decision with reversible effect. \textbf{R3} deprivation of liberty of at least one person; exposure of sensitive data (health, biometric, financial) for a bounded group; discriminatory denial of a service with material effect. \textbf{R4} grave violations affecting many (hundreds to thousands): systematic discriminatory denials, mass exposure of sensitive data with substantiated misuse, chilling of protected activity. \textbf{R5} intense and extensive deprivations damaging living conditions for many (thousands to tens of thousands): wrongful debt enforcement, loss of housing or custody, wrongful prosecution at scale. \textbf{R6} the same at community scale, or destruction of livelihoods for tens of thousands. \textbf{R7--R8} systemic collapse of rights protections or institutions at national or transnational scale. In a data breach, distinguish possible access, substantiated access, extraction and dissemination; row counts alone fix nothing.
+
+\subsection{F --- Economic assets and livelihoods}
+Numeric route \eqref{eq:f} on realised, attributable, deduplicated loss. Additionally: loss of subsistence, housing or access to essential goods is recorded under R or H as appropriate. Declare gross loss, recovery, residual loss, and accounting perspective (victim, sector, society). A risk reserve or the maximum an agent could access is not a realised loss.
+
+\subsection{O --- Operations and essential services}
+\textbf{O1} effective breach of controls with no service effect (Rule~1), or delimited degradation with ordinary recovery. \textbf{O2} interruption of a non-essential service for a bounded population, or of an essential one for minutes; internal production outage. \textbf{O3} relevant loss of function without sufficient substitute: an essential service (health, payments, transport, utilities) degraded for hours for a city-scale population, or a bounded population deprived for days. \textbf{O4} grave loss: essential service lost for days at regional scale, or serious and irreversible disruption of critical infrastructure (EU Art.~3(49)(b)). \textbf{O5--O6} very grave and extensive loss of essential functions at national scale. \textbf{O7--O8} systemic breakdown of services sustaining social life. A system's ``critical'' label does not raise the band; what actually stopped, for whom and how long does.
+
+\subsection{B --- Biosphere and biodiversity}
+\textbf{B1--B2} bounded, low-intensity, reversible alteration. \textbf{B3--B4} relevant or grave loss of function or habitat in a defined ecosystem, with recovery expected within years to decades. \textbf{B5--B6} extensive destruction or deep functional loss across ecosystems or a region. \textbf{B7--B8} massive or global consequences short of the level-9 predicate. A threatened-status listing does not by itself show that the incident caused collapse; loss of one ecosystem does not show global collapse.
+
+\subsection{S --- Societal, institutional and systemic}
+\textbf{S1--S2} bounded disturbance (a local institution's process disrupted; a contained disinformation episode). \textbf{S3--S4} relevant or grave harm to collective functioning: an election process, a court system or a public administration materially compromised for a population. \textbf{S5--S6} extensive deterioration of communities or institutions; loss of public trust with substantiated effects. \textbf{S7--S8} systemic breakdown or civilisational collapse. Viral content, multi-organisation involvement, a market dip or a crisis headline are not by themselves evidence of societal harm. S is not a repository for undemonstrated concerns.
+
+\section{Record schema}
+\label{app:schema}
+
+\begin{table}[H]
+\centering\small
+\caption{Minimum Miniato record (pilot-0.2).}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+Field & Requirement \\
+\midrule
+Identification & ID, parent record (campaign), scope, unit, time window, organisations and populations affected. \\
+System & Model/agent, version, provider, tools and permissions, mode of operation. \\
+Evidence & Sources, dates, method, access limits, substantiated claims. \\
+Attribution & Role of the AI system (direct, contributory, enabling, under investigation); alternative causes. \\
+Profile & $s_H,\dots,s_S$ as points or bounds, with the criterion and evidence for each. \\
+Numeric inputs & $D$, $J$, $L$ with attribution basis, currency, year, conversion. \\
+Terminal predicates & Excluded within scope / substantiated / pending; never filled by default. \\
+Breach and evaluation flags & Effective breach (Rule~1); evaluation-contained (Rule~2). \\
+State & E, A, C; control status; evidence status; next review date. \\
+Result & Admissible levels, determining domain, rules version, cut-off date. \\
+Governance & Evaluators, declared conflicts, revision log. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Reference implementation}
+\label{app:code}
+
+The accompanying \texttt{miniato.py} (Python $\ge$ 3.10, standard library only) implements \eqref{eq:max}--\eqref{eq:G}, the routes \eqref{eq:h}--\eqref{eq:f} with $\theta$ and $w$ as explicit parameters, rectangular evidence bounds, Rule~1 and Rule~2 flags, and the exceedance counts of Section~\ref{sec:bulletin}. \texttt{test\_miniato.py} runs unit tests, an exhaustive enumeration of all $9^{6}$ ordinary profiles for bounds and monotonicity, and a check that the two routes agree at every boundary above $\theta$. The code adjudicates nothing: it receives domain levels and numeric inputs already established by human evaluation and returns levels, sets and counts. It does not infer facts from text, does not use a language model, and does not decide emergency priority.
+
+\end{document}

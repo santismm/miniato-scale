@@ -1,0 +1,14 @@
+[
+  {"bounds": [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"], "evaluation_contained": true,
+   "metadata": {"id": "CASE-1", "description": "Reward hacking inside authorised evaluation (generic)", "E": 2, "A": 3, "C": 3}},
+  {"bounds": [[0,0],[0,0],[1,1],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"],
+   "metadata": {"id": "CASE-2", "description": "Moffatt v. Air Canada (2024 BCCRT 149)", "E": 0, "A": 1, "C": 3}},
+  {"bounds": [[0,0],[3,3],[0,1],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"],
+   "metadata": {"id": "CASE-3", "description": "Wrongful arrest from facial-recognition match, Detroit 2020", "E": 0, "A": 1, "C": 3}},
+  {"bounds": [[4,4],[0,0],[0,2],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"],
+   "metadata": {"id": "CASE-4", "description": "Automated-driving fatality, Tempe 2018 (NTSB HAR-19/03)", "E": 0, "A": 2, "C": 3}},
+  {"bounds": [[0,2],[5,6],[5,6],[0,0],[0,0],[3,4]], "terminal_candidates": ["none"],
+   "metadata": {"id": "CASE-5", "description": "Dutch childcare-benefits scandal 2013-2019", "E": 1, "A": 1, "C": 2}},
+  {"bounds": [[0,0],[2,3],[0,3],[2,3],[0,0],[0,1]], "terminal_candidates": ["none"], "effective_breach": true,
+   "metadata": {"id": "CASE-6", "description": "Multi-agent sandbox escape and third-party intrusion, 2026 (per public reports)", "E": 4, "A": 4, "C": 3}}
+]

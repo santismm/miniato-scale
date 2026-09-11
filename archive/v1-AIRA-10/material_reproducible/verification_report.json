@@ -1,0 +1,10 @@
+{
+  "rules_version": "pilot-0.1",
+  "unit_tests_run": 20,
+  "failures": 0,
+  "errors": 0,
+  "vectors": 531441,
+  "adjacent_monotonicity_checks": 2834352,
+  "ordinal_recoding_checks": 1062882,
+  "interpretation": "Synthetic verification of aggregation and pilot numerical routes only; no empirical or inter-rater validation."
+}

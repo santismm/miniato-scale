@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the preprint below. Affiliation and DOI are pending."
+type: software
+title: "The Miniato Scale: an ordinal severity scale for artificial intelligence incidents"
+version: "2.1"
+date-released: "2026-09-12"
+repository-code: "https://github.com/santismm/Miniato"
+authors:
+  - family-names: "Miniato Santa María Morales"
+    given-names: "Santiago"
+    city: "Madrid"
+    country: "ES"
+keywords:
+  - AI incidents
+  - severity scale
+  - risk communication
+  - autonomous agents
+  - ordinal measurement
+  - incident reporting
+preferred-citation:
+  type: unpublished
+  title: "The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution"
+  authors:
+    - family-names: "Miniato Santa María Morales"
+      given-names: "Santiago"
+  year: 2026
+  month: 9
+  notes: "Preprint, version 2.1, rules pilot-0.2. Not peer-reviewed."
+  url: "https://github.com/santismm/Miniato/blob/main/paper/main.pdf"

@@ -1,0 +1,15 @@
+{
+  "bounds": [[5, 5], [0, 3], [2, 4], [1, 4], [0, 0], [0, 0]],
+  "terminal_candidates": ["none"],
+  "effective_breach": true,
+  "metadata": {
+    "id": "SYNTHETIC-001",
+    "description": "Ejemplo hipotético, no un incidente real. H5 domina todas las interpretaciones admitidas.",
+    "E": 2,
+    "A": 3,
+    "C": 2,
+    "control_status": "active",
+    "evidence_status": "provisional",
+    "assessment_cutoff": "2026-09-11"
+  }
+}
