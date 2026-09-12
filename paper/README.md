@@ -1,4 +1,4 @@
-# Paper — The Miniato Scale v2.5 (rules `pilot-0.3`)
+# Paper — The Miniato Scale v2.6 (rules `pilot-0.3`)
 
 **The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution**
 Santiago Miniato Santa María Morales · September 2026 · preprint, not peer-reviewed.

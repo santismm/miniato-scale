@@ -169,3 +169,13 @@ Registro de decisiones con las alternativas descartadas y el motivo. Formato bre
 - Trazabilidad: `example_cases.json` incluye la justificación de cada dominio, también los no determinantes; el esquema del expediente lo exige.
 
 **No aplicado.** Nombre, arquitectura, regla del máximo, tarjeta y boletín se mantienen, como recomienda la propia revisión. Siguiente hito: aplicación por evaluadores ajenos al diseño, no otra versión del texto.
+
+## D22. Revisión de estilo v2.6
+
+**Contexto (12 sept 2026).** Un análisis externo aplicó una lista de indicios de redacción asistida por IA al paper y propuso humanizarlo. El documento declara esa asistencia, así que el objetivo no era ocultarla sino leerse mejor sin perder precisión.
+
+**Aplicado.** Ritmo de frases variado en resumen, introducción, principios y conclusión; principios P1–P7 en prosa breve en lugar de lista paralela; contribuciones en un párrafo; advertencias consolidadas (resumen, final de la introducción, Limitaciones); motivación práctica de las reglas 2 y 4; conectores de plantilla sustituidos; conclusión con pasos concretos en lugar de recapitulación.
+
+**Rechazado.** El texto de resumen e introducción "humanizado" que acompañaba al análisis inventaba el método: índice logarítmico con fórmula, parámetros δ y γ, ISO 31000, seguridad aérea, Knight Capital, corpus de 100 casos históricos. Ninguno existe en la escala. Humanizar no puede significar describir otro artículo. También se rechazó eliminar toda mención al estado no validado fuera de Limitaciones: un resumen debe decir qué es el trabajo.
+
+**No cambiado.** "Essential" se mantiene donde forma parte de "servicios esenciales", término del Reglamento de IA; "anchor" se mantiene como nombre técnico de θ.

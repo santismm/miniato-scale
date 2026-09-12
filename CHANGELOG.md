@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.6 — 2026-09-12 — reglas `pilot-0.3` (revisión de estilo, sin cambios de contenido)
+
+- Resumen, introducción, principios de diseño y conclusión reescritos con ritmo variado y sin plantilla de lista; se conservan todas las afirmaciones, referencias y definiciones.
+- Advertencias sobre falta de validación consolidadas: una frase en el resumen, una en la introducción y el bloque completo en Limitaciones; eliminadas las repeticiones.
+- Reglas 2 y 4 explican el problema práctico que las motivó.
+- Conectores y léxico de plantilla podados ("Conversely", "Analogously", "explicit", "declared").
+- Rechazada la reescritura de resumen e introducción propuesta por el análisis externo: describía un índice logarítmico con fórmula y parámetros, ISO 31000, Knight Capital y un corpus de 100 casos históricos, nada de lo cual existe en el método. Detalle en `docs/decisiones.md` D22.
+
 ## v2.5 — 2026-09-12 — reglas `pilot-0.3` (versión de cierre)
 
 - Caso neerlandés: retirada la cota F ≤ 6 por alcance; F queda desconocido y el resultado es "≥ 5" con R {5,6} acreditado. Regla: una cota sobre un dominio desconocido exige una estimación documentada que cubra todos los componentes de L, incluida la restauración.
