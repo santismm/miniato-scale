@@ -1,4 +1,4 @@
-"""Deterministic synthetic checks for rules pilot-0.3. No real-incident validation."""
+"""Deterministic synthetic checks for rules pilot-1.0. No real-incident validation."""
 import json
 import unittest
 from decimal import Decimal
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     if not result.wasSuccessful():
         raise SystemExit(1)
     counts = exhaustive_checks()
-    report = {"rules_version": "pilot-0.3", "unit_tests_run": result.testsRun,
+    report = {"rules_version": "pilot-1.0", "unit_tests_run": result.testsRun,
               "failures": len(result.failures), "errors": len(result.errors), **counts,
               "interpretation": "Synthetic verification of aggregation, routes and bulletin counts only; no empirical or inter-rater validation."}
     with open("verification_report.json", "w", encoding="utf-8") as f:

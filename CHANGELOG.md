@@ -1,5 +1,13 @@
 # Changelog
 
+> **Numeración pública.** El preprint se publica como **versión 1.0** con reglas **`pilot-1.0`**. Las entradas siguientes son el historial interno de desarrollo (v0 a v2.6.1, reglas pilot-0.1 a pilot-0.3) y no aparecen en el paper. Correspondencia: público 1.0 = interno 2.6.2; `pilot-1.0` = `pilot-0.3` sin ningún cambio de regla.
+
+## v2.6.2 → público 1.0 — 2026-09-12
+
+- Paper limpio de nombres y versiones internas: sin AIRA, sin numeración de borradores. Los errores de borradores que ilustran una regla se mencionan como "development drafts".
+- Encabezado: "Preprint, version 1.0 · Rules version pilot-1.0". Párrafo de versiones reescrito.
+- Identificador de reglas `pilot-1.0` en código, pruebas y documentación.
+
 ## v2.6.1 — 2026-09-12 — reglas `pilot-0.3` (correcciones de cierre)
 
 - Tabla 1: "feeds operational priority" → "informs the separate response assessment", en coherencia con la sección 2.
