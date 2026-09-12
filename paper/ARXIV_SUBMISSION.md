@@ -5,7 +5,14 @@ Submission draft already created on arXiv: **8070629** (resume from https://arxi
 ## 1. Endorsement (blocking)
 
 1. Log in and open: https://arxiv.org/auth/need-endorsement.php?category_id=cs.AI
-2. arXiv shows a six-character **endorsement code** and the endorser's instructions. Send the message below to one endorser. Candidates with recent cs.AI/cs.LG papers on arXiv from your LinkedIn network: Nayat Sanchez-Pi (Inria Chile; closest to the topic), Edoardo Cetin (Sakana AI), Fernando Castañeda García-Rozas (Nvidia). arXiv's rule for cs.AI (checked 12 Sept 2026): the endorser must have submitted 3 papers to any cs.* subject class between three months and five years ago. Any of the candidates above with recent cs.LG/cs.AI/cs.RO papers should qualify; arXiv confirms it on the endorsement page. The code was also e-mailed to santismm@gmail.com; forwarding that e-mail is enough.
+2. arXiv shows a six-character **endorsement code** and the endorser's instructions. Send the message below to one endorser. Candidates from your LinkedIn network, checked on arXiv's own "show endorsers" pages on 12 Sept 2026:
+
+| Candidate | arXiv says | Use |
+|---|---|---|
+| **Edoardo Cetin** (Sakana AI) | **"Can endorse for cs.AI, cs.LG, cs.CV, cs.CL"** (paper 2512.12167) | **First choice: verified.** |
+| Fernando Castañeda García-Rozas (Nvidia) | Registered author, "Not currently an endorser" (paper 2301.12012) | Cannot endorse. |
+| Jonas Adler (DeepMind) | Not registered as owner of the paper checked (2007.14745) | Unknown; would need his own arXiv account linked to 3+ cs papers. |
+| Nayat Sanchez-Pi (Inria Chile) | Not registered as owner of the papers checked | Unknown; same caveat. Thematically closest, but unverified. | arXiv's rule for cs.AI (checked 12 Sept 2026): the endorser must have submitted 3 papers to any cs.* subject class between three months and five years ago. Any of the candidates above with recent cs.LG/cs.AI/cs.RO papers should qualify; arXiv confirms it on the endorsement page. The code was also e-mailed to santismm@gmail.com; forwarding that e-mail is enough.
 
 ### Message to the endorser (English)
 
