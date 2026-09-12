@@ -77,15 +77,26 @@ def _units_floor(u: Decimal) -> int:
 
 def economic_floor(loss_eur_2025: object, *, theta: Decimal = THETA) -> int:
     """Equation (f). Realised, attributable, deduplicated loss in constant 2025 EUR.
-    Above theta the route is defined through the health route: f(L) = h(L/theta)."""
+    Every band is proportional to theta, so f is a partition for any theta > 0:
+      L >= theta            -> h(L/theta)   (4..8)
+      theta/10 <= L < theta -> 3
+      theta/100 <= L < theta/10 -> 2
+      0 < L < theta/100     -> 1
+      L == 0                -> 0
+    L includes victims' losses and the necessary cost of restoring or replacing assets
+    destroyed or rendered unusable; it excludes response effort, precautionary hardening,
+    discretionary upgrades, unrealised exposures and attacker gains (Rule 4)."""
     amount = _decimal(loss_eur_2025, "loss")
+    theta = Decimal(theta)
+    if theta <= 0:
+        raise ValueError("theta must be positive.")
     if amount == 0:
         return 0
     if amount >= theta:
         return _units_floor(amount / theta)
-    if amount >= 10 ** 6:
+    if amount >= theta / 10:
         return 3
-    if amount >= 10 ** 5:
+    if amount >= theta / 100:
         return 2
     return 1
 
@@ -173,7 +184,8 @@ def control_flag(E: int) -> bool:
 
 
 def exceedance_counts(records: Iterable[dict], ks: Sequence[int] = (1, 3, 4, 6)) -> dict:
-    """Bulletin counts. Each record: {'lower_bound': int, 'upper_bound': int, 'hazard_tag': bool, 'E': int}."""
+    """Bulletin counts over consolidated parent records only (Section 9.2).
+    Each record: {'lower_bound': int, 'upper_bound': int, 'hazard_tag': bool, 'E': int}."""
     recs = list(records)
     out = {"n_records": len(recs), "certain": {}, "possible": {}, "L_max": 0,
            "hazard_tagged": 0, "control_flagged": 0}

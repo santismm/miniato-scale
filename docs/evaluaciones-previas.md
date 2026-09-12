@@ -27,7 +27,7 @@ Antes de v2 se aplicó la versión 1 de la escala, entonces llamada AIRA-10 (`pi
 - El paper definía la salida como conjunto ordinal; "85 %" no existe en la metodología.
 - F no se cuantificó y aun así se cerró un punto.
 
-**Bajo v2.** Perfil: H0; R{2,3} por extracción acreditada de secretos y acceso limitado a datos de clientes; O{2,3} por vulneración efectiva (regla 1) más caída interna; F ≤ 3 sin pérdidas realizadas reportadas en la banda de 10 M€, con remediación excluida (regla 4); B0; S{0,1}. Resultado: **{2, 3}** con bandera de control (E4), A4, C3, estado *contenido*. Tarjeta reproducida en la figura 1 del paper.
+**Bajo v2.2.** Perfil: H0; R{1,2} por el uso de catorce credenciales de usuario expuestas y el acceso a cinco datasets (los secretos técnicos de los trabajadores son daño operativo, no de datos personales); O{2,3} por vulneración efectiva (regla 1), acceso administrativo y caída interna; F **no establecido**, porque no hay cifra publicada y la ausencia de cifra no es una cota; B0; S{0,1}. Resultado: **≥ 2** con bandera de control (E4 máximo durante el incidente), A4, C3, estado *contenido* en la fecha de corte. La v2.0 había acotado F ≤ 3 sin evidencia; fue un error señalado por la revisión externa y corregido en v2.2.
 
 **Lección.** Este es el caso que obligó a la doble señal (D6). Un 3 sin bandera tranquiliza; un 3 con bandera y E4 dice lo que pasó: poco daño consumado, control perdido.
 

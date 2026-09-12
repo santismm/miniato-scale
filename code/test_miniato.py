@@ -36,6 +36,28 @@ class AiraTests(unittest.TestCase):
             self.assertEqual(economic_floor(boundary + 1), level)
         self.assertEqual(economic_floor(10**11), 7)
 
+    def test_theta_partition(self):
+        # For every theta in the sensitivity set, f is monotone in L, gap-free and overlap-free.
+        for theta in (Decimal(10)**6, 3*Decimal(10)**6, Decimal(10)**7, 3*Decimal(10)**7):
+            self.assertEqual(economic_floor(theta / 100 - 1, theta=theta), 1)
+            self.assertEqual(economic_floor(theta / 100, theta=theta), 2)
+            self.assertEqual(economic_floor(theta / 10 - 1, theta=theta), 2)
+            self.assertEqual(economic_floor(theta / 10, theta=theta), 3)
+            self.assertEqual(economic_floor(theta - 1, theta=theta), 3)
+            self.assertEqual(economic_floor(theta, theta=theta), 4)
+            prev = 0
+            for k in range(0, 140):
+                L = Decimal(10) ** (Decimal(k) / 10)  # 1 .. 10^13.9
+                lvl = economic_floor(L, theta=theta)
+                self.assertGreaterEqual(lvl, prev)
+                self.assertIn(lvl, range(1, 9))
+                prev = lvl
+        # The review's two counterexamples against version 2.1 now resolve to one value each.
+        self.assertEqual(economic_floor(2_000_000, theta=Decimal(10)**6), 4)
+        self.assertEqual(economic_floor(20_000_000, theta=3*Decimal(10)**7), 3)
+        with self.assertRaises(ValueError):
+            economic_floor(1, theta=Decimal(0))
+
     def test_single_anchor_alignment(self):
         # For every level >= 4, the economic floor at L = U * theta equals the health floor at U deaths.
         for deaths in (1, 5, 10, 50, 100, 999, 1000, 99999, 100000, 10**7):

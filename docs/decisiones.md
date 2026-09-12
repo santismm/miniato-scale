@@ -108,3 +108,26 @@ Registro de decisiones con las alternativas descartadas y el motivo. Formato bre
 **Decisión.** El paper nombra los tres modelos usados (Google Gemini 3.6 Flash, OpenAI GPT-5.6 Sol, Anthropic Claude Fable 5.1) y las funciones de cada uno por fase, y afirma que no son autores.
 **Alternativas.** Declaración genérica ("se usaron modelos de lenguaje"); omitirla; listar los modelos como coautores.
 **Motivo.** Una declaración genérica oculta algo científicamente interesante: una metodología humana construida mediante crítica y formalización adversarial entre modelos distintos. Listar modelos como coautores es incorrecto: no pueden asumir responsabilidad. El reparto de funciones se declara "según lo registra el autor de sus historiales", porque ningún modelo puede verificar desde fuera lo que hicieron los otros.
+
+## D18. Revisión v2.2 tras una crítica metodológica externa
+
+**Contexto (12 sept 2026).** El autor recibió una revisión externa del preprint v2.1 con 15 hallazgos. Se aceptaron todos los que señalaban errores comprobables y la mayoría de los metodológicos.
+
+**Aceptado y aplicado.**
+- Ecuación económica mal definida al variar θ: ahora todas las bandas son proporcionales a θ (θ/100, θ/10, θ). Verificado con una prueba que recorre las cuatro θ del análisis de sensibilidad.
+- "Todo incidente grave de la UE es Miniato ≥ 3" no se sostenía: sustituido por una correspondencia de materia y un campo separado en el expediente.
+- Cota F ≤ 3 en el caso Hugging Face sin evidencia: retirada; el caso queda en "≥ 2". Regla explícita: una cota sobre un dominio desconocido solo es admisible cuando el alcance documentado excluye pérdidas mayores.
+- Tarjeta contradictoria (titular 3 con conjunto {2,3}; E4 junto a "contenido"): el titular muestra la clasificación resuelta; E es el máximo durante el incidente y la contención es un campo aparte.
+- θ y w: se retira "aseguran gravedad comparable"; se declara correspondencia normativa a evaluar; w no se deriva de los pesos de discapacidad.
+- Pendiente de Gutenberg–Richter: exploratoria; señal de mezcla por proporción de nivel ≥ 4 y distribución acumulada.
+- Boletín: unidad de recuento (solo registros padre) y tres fechas (inicio, descubrimiento, clasificación); asignación al periodo de inicio.
+- Frontera 0/1: ejemplos de H1 y R1 corregidos; regla 2 ampliada a resultados corrompidos usados fuera del experimento.
+- Rúbricas: bandas emparejadas (B, O, S, R7–R8) separadas con criterios; tabla de definiciones de E, A y C.
+- Regla 4: el coste necesario de restaurar activos destruidos entra en L; el esfuerzo de respuesta y las mejoras no.
+- Antecedentes: Harm Severity Scale de Mylius (AIID, 2025) y MIT AI Incident Tracker citados y comparados.
+- Tabla retrospectiva: caso sintético etiquetado como tal; referencia ACLU para Detroit; F de Países Bajos acotado por alcance, no por cantidades exigidas.
+- Editorial: "a Miniato level", cuatro componentes en la notación, "regla de agregación explícita" en lugar de "única elección normativa", "una única ancla declarada", "inobservable por cualquier evaluador humano", "diseñada para mantener un significado" en lugar de "siempre significa lo mismo".
+- Validación: "prerregistrado" pasa a "criterios propuestos, a prerregistrar con fecha y versión"; medición del acuerdo sobre conjuntos; separación entre incertidumbre de evidencia e indeterminación de la regla.
+- Código: URL del repositorio en el paper.
+
+**No aplicado, con motivo.** La crítica sugería mantener F "desconocido" también en el caso neerlandés. Se acotó F en [0,6] porque el alcance documentado (decenas de miles de familias, decenas de miles de euros cada una) excluye pérdidas de 10³·θ o más; eso es una cota por alcance, admitida por la sección 5.3, no una cota por ausencia de informe.

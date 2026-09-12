@@ -12,7 +12,7 @@ python3 miniato.py example_cases.json   # bulletin counts over the six retrospec
 | Function | Implements |
 |---|---|
 | `health_floor(deaths, serious_injuries)` | Eq. (6): harm units U = D + 0.1·J; floors 3 to 8. |
-| `economic_floor(loss_eur_2025)` | Eq. (7): floors 1 to 8; above θ = 10⁷ € defined through the health route. |
+| `economic_floor(loss_eur_2025, theta=...)` | Eq. (7): floors 1 to 8; every band proportional to θ (θ/100, θ/10, θ), so the function stays a partition when θ varies; above θ defined through the health route. |
 | `score_profile(scores, terminal, effective_breach, evaluation_contained)` | Eqs. (2) and (3), plus Rule 1 (breach ⇒ O ≥ 1) and Rule 2 (evaluation-contained ⇒ 0 with hazard tag). |
 | `score_bounds(bounds, terminal_candidates, ...)` | Set-valued classification from rectangular evidence bounds (Section 5.3). |
 | `control_flag(E)` | Public card flag: true when E ≥ 3. |

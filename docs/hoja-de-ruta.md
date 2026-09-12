@@ -23,6 +23,7 @@
 - [ ] Salida: rúbricas congeladas con ejemplos frontera y condiciones de abstención.
 
 ### Reproducibilidad entre evaluadores
+- [ ] Prerregistrar los criterios de aceptación con fecha, versión y localización antes de empezar (el paper los presenta como propuestos, no como prerregistrados).
 - [ ] Corpus de 100 expedientes públicos: 40 para desarrollo, 60 para evaluación ciega.
 - [ ] Tres evaluadores independientes por expediente.
 - [ ] Estadístico principal: α de Krippendorff ordinal. Aceptación prerregistrada: α ≥ 0,80 global, ningún dominio < 0,67, sin desacuerdos sistemáticos de dos niveles concentrados en R o B.
@@ -41,6 +42,8 @@
 La metodología no está validada si el acuerdo depende de la identidad del evaluador, si los desacuerdos se concentran en un dominio, o si la tarjeta aumenta la complacencia ante amenazas activas.
 
 ## Trabajo futuro identificado
+
+- Cotas por alcance: criterio operativo para cuándo el alcance documentado permite acotar un dominio desconocido (aplicado al caso neerlandés, no al de Hugging Face).
 
 - Criterio planetario operativo para el predicado ecológico del nivel 9.
 - Rúbrica de daño colectivo no mortal por encima de H4.

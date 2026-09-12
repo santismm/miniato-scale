@@ -1,6 +1,6 @@
 {
   "rules_version": "pilot-0.2",
-  "unit_tests_run": 16,
+  "unit_tests_run": 17,
   "failures": 0,
   "errors": 0,
   "vectors": 531441,

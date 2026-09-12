@@ -54,9 +54,9 @@ Ninguna combinación de puntuaciones ordinarias llega a 9 o 10. Esos predicados 
 
 | Nivel | Unidades de daño U | Pérdida L (€ constantes 2025) |
 |---|---|---|
-| 1 | — | 0 < L < 10⁵ |
-| 2 | — | 10⁵ ≤ L < 10⁶ |
-| 3 | ≥ 1 lesión permanente grave, U < 1 | 10⁶ ≤ L < 10⁷ |
+| 1 | — | 0 < L < θ/100 (10⁵ €) |
+| 2 | — | θ/100 ≤ L < θ/10 |
+| 3 | ≥ 1 lesión permanente grave, U < 1 | θ/10 ≤ L < θ |
 | 4 | 1 ≤ U < 10 | 10⁷ ≤ L < 10⁸ |
 | 5 | 10 ≤ U < 10² | 10⁸ ≤ L < 10⁹ |
 | 6 | 10² ≤ U < 10³ | 10⁹ ≤ L < 10¹⁰ |
@@ -65,24 +65,24 @@ Ninguna combinación de puntuaciones ordinarias llega a 9 o 10. Esos predicados 
 
 Ambas son **suelos**, nunca techos. Cero muertes confirmadas no implica nivel bajo. "No hay muertos confirmados" no es "se ha confirmado que no hay muertos".
 
-La pérdida L es la realizada y atribuible, sin duplicar entre partes, **excluyendo costes de remediación**, exposiciones no materializadas y ganancias del atacante.
+Todas las fronteras económicas son proporcionales a θ, así que la función sigue siendo una partición cuando θ varía en el análisis de sensibilidad. La pérdida L es la realizada y atribuible, sin duplicar entre partes. Incluye las pérdidas de las víctimas y el coste necesario de restaurar o sustituir activos destruidos o inutilizados; excluye el esfuerzo de respuesta, el endurecimiento preventivo, las mejoras discrecionales, las exposiciones no materializadas y las ganancias del atacante.
 
 ## 6. Reglas especiales
 
 | Regla | Contenido |
 |---|---|
 | **1. Suelo por vulneración efectiva** | Escapar de un perímetro autorizado, obtener acceso administrativo no autorizado o modificar datos de producción es una consecuencia real: O ≥ 1 aunque no haya daño externo. Un intento bloqueado, una vulnerabilidad no explotada o un ensayo autorizado no lo activan. |
-| **2. Incidentes contenidos en evaluaciones** | Si lo único afectado es la integridad de una evaluación autorizada (reward hacking, manipulación de tests) y el sistema no actuó fuera del perímetro: nivel 0 con etiqueta *peligro*; E y A se registran y muestran. Si salió del perímetro, aplica la regla 1. |
-| **3. Campañas** | Se clasifica la unión deduplicada de consecuencias, no el máximo de los episodios ni su suma. Partir un expediente no debe cambiar el resultado. |
-| **4. La remediación no es daño** | El nivel nunca se infiere del tamaño de la respuesta (clústeres reconstruidos, credenciales rotadas). Y reparar no rebaja el nivel: un 6 reparado sigue siendo 6 con estado *contenido*. |
+| **2. Incidentes contenidos en evaluaciones** | Si lo único afectado es la integridad de una evaluación autorizada (reward hacking, manipulación de tests) y el sistema no actuó fuera del perímetro: nivel 0 con etiqueta *peligro*; E y A se registran y muestran. Si salió del perímetro, aplica la regla 1. Si el resultado corrompido se usó después fuera del experimento (una afirmación de seguridad publicada, una decisión de despliegue), ese uso es una consecuencia y se clasifica en O o S. |
+| **3. Campañas** | Se clasifica la unión deduplicada de consecuencias, no el máximo de los episodios ni su suma. Solo el registro padre entra en los recuentos del boletín. Partir un expediente no debe cambiar el resultado. |
+| **4. El esfuerzo de respuesta no es daño** | El nivel nunca se infiere del tamaño de la respuesta (investigación, credenciales rotadas, reconstrucciones preventivas). Se distinguen cuatro gastos: pérdidas directas de las víctimas y coste necesario de restaurar activos destruidos, que entran en L; mejoras adicionales y gasto discrecional, que no. Y reparar no rebaja el nivel: un 6 reparado sigue siendo 6 con estado *contenido*. |
 | **5. Revisiones** | Versionadas: valor previo, valor actual, nueva evidencia, motivo. La contención cambia el estado, no el nivel. |
 | **6. Atribución** | Solo causa directa o contribución material producen un nivel publicado. Los demás casos se comunican como "consecuencias de nivel k; relación con IA en investigación". |
 
 ## 7. La tarjeta pública
 
 ```
-Miniato 3   Significativo
-[!] Control no asegurado (E4)
+Miniato ≥ 2   Limitado o superior
+[!] Se perdió el control (E4 máximo durante el incidente)
 Autonomía: A4 (multiagente distribuido)
 Evidencia: confirmada (C3)
 Estado: contenido
@@ -96,7 +96,7 @@ Niveles admisibles: {2, 3}   Reglas: pilot-0.2   Corte: 2026-08-26
 
 ## 8. El boletín
 
-Por periodo T (trimestre o año):
+Por periodo T (trimestre o año). Se cuentan solo los registros padre consolidados; un incidente pertenece al periodo en que empezó el daño, y las consecuencias descubiertas después se publican como revisión de ese periodo, no como incidente nuevo.
 
 - **N≥k**: número de incidentes cuyo nivel cierto (cota inferior) alcanza k. Se publica para k = 1, 3, 4, 6, con la versión "posible" (cota superior).
 - **L_max**: nivel máximo alcanzado.
@@ -104,7 +104,7 @@ Por periodo T (trimestre o año):
 - **Libro de daños** en unidades nativas: muertes, lesiones, euros, personas con derechos vulnerados.
 - **Cobertura**: fuentes, población que reporta, cambios de reglas.
 
-"Empeora" significa una de tres cosas, siempre con la advertencia de cobertura: sube N≥k para un k fijo; la pendiente de log N≥k contra k se aplana (los eventos graves se hacen relativamente más frecuentes); sube la proporción de registros con bandera de control.
+"Empeora" significa una de tres cosas, siempre con la advertencia de cobertura: sube N≥k para un k fijo; sube la proporción de registros de nivel 4 o superior, o se desplaza hacia arriba la distribución acumulada de niveles; sube la proporción de registros con bandera de control. La pendiente de log N≥k contra k, por analogía con Gutenberg–Richter, es solo un estadístico exploratorio: depende del espaciado numérico de categorías ordinales.
 
 Nunca se promedia la escala Miniato. Nunca se clasifica a organizaciones por número de incidentes reportados.
 
@@ -116,11 +116,11 @@ Artículo 3(49), "incidente grave": (a) muerte o daño grave a la salud → Mini
 
 | Caso | Nivel | E/A/C |
 |---|---|---|
-| Reward hacking dentro de un sandbox de evaluación autorizado | 0 (peligro) | E2/A3/C3 |
+| Reward hacking dentro de un sandbox de evaluación autorizado (*ilustración sintética, no un caso documentado*) | 0 (peligro) | E2/A3/C3 |
 | Moffatt v. Air Canada, 2024 | 1 | E0/A1/C3 |
 | Detención errónea por reconocimiento facial, Detroit 2020 | 3 | E0/A1/C3 |
 | Atropello mortal de vehículo automatizado, Tempe 2018 | 4 | E0/A2/C3 |
-| Escándalo de ayudas a la infancia, Países Bajos 2013–2019 | {5, 6} | E1/A1/C2 |
-| Fuga multiagente e intrusión en terceros, 2026 | {2, 3} [!] | E4/A4/C3 |
+| Escándalo de ayudas a la infancia, Países Bajos 2013–2019 | {5, 6} (R determinante; F acotado en [0,6] por el alcance documentado) | E1/A1/C2 |
+| Fuga multiagente e intrusión en terceros, 2026 | ≥ 2 [!] (O 2–3, R 1–2, F no establecido) | E4/A4/C3 |
 
-Clasificaciones del autor a partir de documentos públicos, provisionales hasta el estudio entre evaluadores.
+Clasificaciones del autor a partir de documentos públicos, provisionales hasta el estudio entre evaluadores. Los casos se eligieron para cubrir el rango: muestran que las reglas pueden producir dispersión, no que los incidentes reales se distribuyan así.

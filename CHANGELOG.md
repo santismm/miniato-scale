@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.2 — 2026-09-12 — reglas `pilot-0.2` (revisión mayor tras crítica externa)
+
+- Ecuación económica con bandas proporcionales a θ; prueba de partición para θ ∈ {10⁶, 3·10⁶, 10⁷, 3·10⁷}.
+- Relación con el art. 3(49) del Reglamento de IA reformulada como correspondencia de materia; campo separado en el expediente.
+- Caso Hugging Face: cota F ≤ 3 retirada; resultado "≥ 2" con O determinante y R 1–2.
+- Tarjeta pública: titular con la clasificación resuelta (punto, conjunto o cota inferior); E como máximo durante el incidente, contención como campo aparte.
+- Boletín: unidad de recuento y fechas definidas; pendiente Gutenberg–Richter demotada a exploratoria.
+- Regla 2 ampliada; regla 4 renombrada "el esfuerzo de respuesta no es daño" con cuatro tipos de gasto.
+- Rúbricas: bandas emparejadas separadas; nueva tabla de E, A y C.
+- Antecedentes: Mylius (AIID 2025) y MIT AI Incident Tracker; referencias ACLU (Detroit), US DOT (VSL), Salomon et al. (pesos de discapacidad). 34 referencias.
+- Caso sintético etiquetado; F del caso neerlandés acotado por alcance.
+- Correcciones editoriales señaladas por la revisión. Detalle en `docs/decisiones.md` D18.
+
 ## v2.1 — 2026-09-12 — reglas `pilot-0.2` (sin cambios de reglas)
 
 - **Renombrado**: AIRA-10 → **Miniato Scale**; marco AIRA → expediente Miniato; boletín AIRA → boletín Miniato. Motivo en `docs/decisiones.md` D15.
