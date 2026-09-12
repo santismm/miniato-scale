@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.3 — 2026-09-12 — reglas `pilot-0.2` (coherencia texto–resultados tras segunda revisión externa)
+
+- Retirada la afirmación "Tempe tiene el nivel más alto": con 4 frente a ≥ 2 no se deduce un orden; el texto lo dice y explica qué sí distingue a ambos casos.
+- "Non-fatal" sustituido por "sin daño físico comunicado en las fuentes examinadas", en coherencia con la regla sobre ausencia de evidencia.
+- Frontera R1/R2 definida operativamente (salida frente a decisión), con ejemplo fronterizo y regla de prioridad al máximo.
+- Cada hecho del caso de 2026 asignado a la fuente que lo documenta; se explicita que METR no cubre el compromiso posterior de OpenAI.
+- Mylius (AIID) y MIT AI Incident Tracker presentados como esfuerzos vinculados, no independientes.
+- Estilo: apertura del resumen reformulada sobre la carencia concreta; antítesis reducidas; "Proposition" pasa a "Property".
+- Detalle en `docs/decisiones.md` D19.
+
 ## v2.2 — 2026-09-12 — reglas `pilot-0.2` (revisión mayor tras crítica externa)
 
 - Ecuación económica con bandas proporcionales a θ; prueba de partición para θ ∈ {10⁶, 3·10⁶, 10⁷, 3·10⁷}.

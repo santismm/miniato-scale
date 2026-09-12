@@ -131,3 +131,17 @@ Registro de decisiones con las alternativas descartadas y el motivo. Formato bre
 - Código: URL del repositorio en el paper.
 
 **No aplicado, con motivo.** La crítica sugería mantener F "desconocido" también en el caso neerlandés. Se acotó F en [0,6] porque el alcance documentado (decenas de miles de familias, decenas de miles de euros cada una) excluye pérdidas de 10³·θ o más; eso es una cota por alcance, admitida por la sección 5.3, no una cota por ausencia de informe.
+
+## D19. Revisión v2.3 tras una segunda crítica externa
+
+**Contexto (12 sept 2026).** Segunda revisión externa sobre v2.2, centrada en coherencia entre reglas, tabla, resumen y conclusiones, y en rastros de redacción asistida.
+
+**Aceptado y aplicado.**
+- Hallazgo principal: "la primera [Tempe] tiene el nivel más alto" no se deducía de 4 frente a ≥ 2. Retirado en texto, resumen y conclusión; sustituido por lo que sí distingue a ambos casos (clasificación puntual y sin bandera frente a cota inferior con bandera).
+- "Non-fatal" → "sin daño físico comunicado en las fuentes examinadas".
+- R1/R2: definición operativa de salida (revisada por una persona antes de cualquier efecto) frente a decisión (surtió efecto sin esa revisión), ejemplo fronterizo y regla de prioridad al máximo.
+- Fuentes del caso 2026 desagregadas por hecho; METR delimitado a su alcance real.
+- Mylius y MIT Tracker: vinculados, no independientes.
+- Estilo: apertura del resumen sobre la carencia concreta en lugar del contraste retórico; antítesis no técnicas reformuladas; proposiciones renombradas como propiedades de diseño.
+
+**No aplicado, con motivo.** No se eliminaron las distinciones técnicas formuladas como oposición (consecuencia/peligro, ordinal/probabilístico, gravedad/prioridad): la propia crítica reconoce que cumplen una función. No se redujo la declaración de uso de IA: la crítica confirma que es explícita y correcta.

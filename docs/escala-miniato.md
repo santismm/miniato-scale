@@ -123,4 +123,4 @@ Artículo 3(49), "incidente grave": (a) muerte o daño grave a la salud → Mini
 | Escándalo de ayudas a la infancia, Países Bajos 2013–2019 | {5, 6} (R determinante; F acotado en [0,6] por el alcance documentado) | E1/A1/C2 |
 | Fuga multiagente e intrusión en terceros, 2026 | ≥ 2 [!] (O 2–3, R 1–2, F no establecido) | E4/A4/C3 |
 
-Clasificaciones del autor a partir de documentos públicos, provisionales hasta el estudio entre evaluadores. Los casos se eligieron para cubrir el rango: muestran que las reglas pueden producir dispersión, no que los incidentes reales se distribuyan así.
+Clasificaciones del autor a partir de documentos públicos, provisionales hasta el estudio entre evaluadores. Los casos se eligieron para cubrir el rango: muestran que las reglas pueden producir dispersión, no que los incidentes reales se distribuyan así. Entre Tempe (4, sin bandera) y el caso de 2026 (≥ 2, con bandera) no puede establecerse un orden de gravedad con la evidencia disponible; lo que los distingue es la bandera, no el nivel.
