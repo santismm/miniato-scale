@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.6.1 — 2026-09-12 — reglas `pilot-0.3` (correcciones de cierre)
+
+- Tabla 1: "feeds operational priority" → "informs the separate response assessment", en coherencia con la sección 2.
+- Regla 4: errata de mayúscula ("a level-6" → "A level-6").
+- Párrafo de versiones: decía 2.5; ahora 2.6.1 y deja constancia de que la v2.6 cambió prosa, no reglas.
+- Resumen: "no public level exists" → "no widely adopted public level exists".
+
 ## v2.6 — 2026-09-12 — reglas `pilot-0.3` (revisión de estilo, sin cambios de contenido)
 
 - Resumen, introducción, principios de diseño y conclusión reescritos con ritmo variado y sin plantilla de lista; se conservan todas las afirmaciones, referencias y definiciones.

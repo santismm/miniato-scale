@@ -3,7 +3,7 @@
 **Una escala pública de gravedad para incidentes de inteligencia artificial, y un boletín para ver si empeoran.**
 *A public severity scale for AI incidents, and a bulletin for tracking whether they are getting worse.*
 
-Autor: Santiago Miniato Santa María Morales (Madrid). Estado: **propuesta metodológica v2.6, reglas `pilot-0.3`, sin validación empírica todavía.**
+Autor: Santiago Miniato Santa María Morales (Madrid). Estado: **propuesta metodológica v2.6.1, reglas `pilot-0.3`, sin validación empírica todavía.**
 
 ---
 
@@ -37,7 +37,7 @@ Referencia rápida completa en español: [`docs/escala-miniato.md`](docs/escala-
 ## Estructura del repositorio
 
 ```
-paper/      Preprint v2.6 en LaTeX (inglés, con resumen en español) y PDF compilado
+paper/      Preprint v2.6.1 en LaTeX (inglés, con resumen en español) y PDF compilado
 code/       Implementación de referencia en Python, pruebas y casos de ejemplo
 docs/       Documentación en español: escala, historia, críticas, decisiones, hoja de ruta
 archive/    Versiones anteriores (v0 SMM, v1 y v2.0 AIRA-10) conservadas por trazabilidad
@@ -73,7 +73,7 @@ El uso previsto: *"The incident was a Miniato 4."*
 
 Ver [`CITATION.cff`](CITATION.cff). Mientras no haya DOI:
 
-> Miniato Santa María Morales, S. (2026). *The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution.* Preprint v2.6, rules pilot-0.3. https://github.com/santismm/miniato-scale
+> Miniato Santa María Morales, S. (2026). *The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution.* Preprint v2.6.1, rules pilot-0.3. https://github.com/santismm/miniato-scale
 
 ## Uso de IA
 
