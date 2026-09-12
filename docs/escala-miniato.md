@@ -1,4 +1,4 @@
-# La escala Miniato — Referencia rápida en español (reglas `pilot-0.2`)
+# La escala Miniato — Referencia rápida en español (reglas `pilot-0.3`)
 
 Este documento resume el paper [`paper/main.pdf`](../paper/main.pdf). Cuando haya discrepancia, manda el paper.
 
@@ -87,7 +87,7 @@ Autonomía: A4 (multiagente distribuido)
 Evidencia: confirmada (C3)
 Estado: contenido
 Dominio determinante: R (extracción de credenciales y secretos)
-Niveles admisibles: {2, 3}   Reglas: pilot-0.2   Corte: 2026-08-26
+Niveles admisibles: {2, 3}   Reglas: pilot-0.3   Corte: 2026-08-26
 ```
 
 - La bandera `[!]` aparece siempre que E ≥ 3.

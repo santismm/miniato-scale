@@ -1,4 +1,4 @@
-# Miniato Scale — reference implementation, rules `pilot-0.2`
+# Miniato Scale — reference implementation, rules `pilot-0.3`
 
 Python ≥ 3.10, standard library only. The code adjudicates nothing: it receives domain levels and numeric inputs already established by human evaluation and returns levels, admissible sets, flags and bulletin counts. It does not read incident text, does not use a language model and does not decide emergency priority.
 

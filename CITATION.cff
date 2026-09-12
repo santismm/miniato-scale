@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite the preprint below. A DOI is pending."
 type: software
 title: "The Miniato Scale: an ordinal severity scale for artificial intelligence incidents"
-version: "2.3"
+version: "2.4"
 date-released: "2026-09-12"
 repository-code: "https://github.com/santismm/miniato-scale"
 license: CC-BY-4.0
@@ -28,5 +28,5 @@ preferred-citation:
       given-names: "Santiago"
   year: 2026
   month: 9
-  notes: "Preprint, version 2.3, rules pilot-0.2. Not peer-reviewed."
+  notes: "Preprint, version 2.4, rules pilot-0.3. Not peer-reviewed."
   url: "https://github.com/santismm/miniato-scale/blob/main/paper/main.pdf"

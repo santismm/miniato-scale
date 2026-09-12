@@ -145,3 +145,13 @@ Registro de decisiones con las alternativas descartadas y el motivo. Formato bre
 - Estilo: apertura del resumen sobre la carencia concreta en lugar del contraste retórico; antítesis no técnicas reformuladas; proposiciones renombradas como propiedades de diseño.
 
 **No aplicado, con motivo.** No se eliminaron las distinciones técnicas formuladas como oposición (consecuencia/peligro, ordinal/probabilístico, gravedad/prioridad): la propia crítica reconoce que cumplen una función. No se redujo la declaración de uso de IA: la crítica confirma que es explícita y correcta.
+
+## D20. Revisión v2.4 y reglas `pilot-0.3`
+
+**Contexto (12 sept 2026).** Tercera revisión externa. Da por cerrados la comparación Tempe/2026, "non-fatal", la relación Mylius–MIT y la desagregación de fuentes; deja abierto R1/R2 y pide tres ajustes.
+
+**Aceptado y aplicado.**
+- R1/R2: la v2.3 distinguía salida de decisión por la existencia de revisión humana. Eso introducía un rasgo del proceso en una escala que, por P1, clasifica consecuencias, y permitía rebajar a R1 un rechazo discriminatorio ratificado por una persona. Ahora R2 exige solo que la decisión adversa surtiera efecto; la revisión humana que no lo impidió cambia la atribución causal, no el daño. R1 tiene un ejemplo positivo (ranking sesgado que retrasa revisiones días, corregido antes de ningún rechazo).
+- Identificador de reglas: al cambiar un criterio de rúbrica, `pilot-0.2` → `pilot-0.3`, en paper, código y documentación.
+- "Cuatro regiones": atribuido a OpenAI (26 ago), no a Hugging Face.
+- Resumen inglés: enumeración de resultados; resumen español: pérdida de control durante el incidente frente a contención en la fecha de corte.

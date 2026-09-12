@@ -1,5 +1,5 @@
 {
-  "rules_version": "pilot-0.2",
+  "rules_version": "pilot-0.3",
   "unit_tests_run": 17,
   "failures": 0,
   "errors": 0,

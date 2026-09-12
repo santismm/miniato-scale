@@ -1,4 +1,4 @@
-"""Miniato Scale reference implementation, rules pilot-0.2.
+"""Miniato Scale reference implementation, rules pilot-0.3.
 
 Implements the aggregation (max rule + terminal predicates), the health and
 economic routes with a single anchor theta, rectangular evidence bounds,
@@ -12,7 +12,7 @@ import json
 from decimal import Decimal, InvalidOperation
 from typing import Iterable, Sequence
 
-VERSION = "pilot-0.2"
+VERSION = "pilot-0.3"
 DOMAINS = ("H", "R", "F", "O", "B", "S")
 TERMINALS = ("none", "human_extinction", "complex_ecosystem_collapse", "total_biological_annihilation")
 THETA = Decimal(10) ** 7      # euros (2025) per statistical death

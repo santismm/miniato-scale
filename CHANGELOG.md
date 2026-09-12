@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.4 — 2026-09-12 — reglas `pilot-0.3` (tercera revisión externa)
+
+- **R1/R2**: la condición decisiva de R2 es que la decisión discriminatoria surtió efecto, con independencia de si fue automática o revisada y ratificada por una persona (P1: se clasifican consecuencias). R1 recibe un ejemplo positivo. Al cambiar un criterio de rúbrica, las reglas pasan de `pilot-0.2` a `pilot-0.3`; las rutas numéricas no cambian.
+- "Cuatro regiones" atribuido al informe de OpenAI del 26 de agosto, que es donde consta.
+- Resumen: se enumeran los resultados (1, 3, 4, {5,6}, ≥ 2 y 0) en lugar de sugerir un máximo global.
+- Resumen en español: "pérdida de control ocurrida durante el incidente" en lugar de "incidente sin control".
+- Detalle en `docs/decisiones.md` D20.
+
 ## v2.3 — 2026-09-12 — reglas `pilot-0.2` (coherencia texto–resultados tras segunda revisión externa)
 
 - Retirada la afirmación "Tempe tiene el nivel más alto": con 4 frente a ≥ 2 no se deduce un orden; el texto lo dice y explica qué sí distingue a ambos casos.

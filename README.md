@@ -3,7 +3,7 @@
 **Una escala pública de gravedad para incidentes de inteligencia artificial, y un boletín para ver si empeoran.**
 *A public severity scale for AI incidents, and a bulletin for tracking whether they are getting worse.*
 
-Autor: Santiago Miniato Santa María Morales (Madrid). Estado: **propuesta metodológica v2.3, reglas `pilot-0.2`, sin validación empírica todavía.**
+Autor: Santiago Miniato Santa María Morales (Madrid). Estado: **propuesta metodológica v2.4, reglas `pilot-0.3`, sin validación empírica todavía.**
 
 ---
 
@@ -37,7 +37,7 @@ Referencia rápida completa en español: [`docs/escala-miniato.md`](docs/escala-
 ## Estructura del repositorio
 
 ```
-paper/      Preprint v2.3 en LaTeX (inglés, con resumen en español) y PDF compilado
+paper/      Preprint v2.4 en LaTeX (inglés, con resumen en español) y PDF compilado
 code/       Implementación de referencia en Python, pruebas y casos de ejemplo
 docs/       Documentación en español: escala, historia, críticas, decisiones, hoja de ruta
 archive/    Versiones anteriores (v0 SMM, v1 y v2.0 AIRA-10) conservadas por trazabilidad
@@ -73,8 +73,8 @@ El uso previsto: *"The incident was a Miniato 4."*
 
 Ver [`CITATION.cff`](CITATION.cff). Mientras no haya DOI:
 
-> Miniato Santa María Morales, S. (2026). *The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution.* Preprint v2.3, rules pilot-0.2. https://github.com/santismm/miniato-scale
+> Miniato Santa María Morales, S. (2026). *The Miniato Scale: Communicating the Severity of Artificial Intelligence Incidents and Tracking Their Evolution.* Preprint v2.4, rules pilot-0.3. https://github.com/santismm/miniato-scale
 
 ## Uso de IA
 
-Este trabajo se desarrolló mediante un proceso explícitamente multimodelo asistido por IA, declarado como parte del método: Google Gemini 3.6 Flash (revisión inicial de escalas y primer borrador), OpenAI GPT-5.6 Sol (crítica de v0, diseño del expediente y del primer índice 0–10, paper v1, primeras aplicaciones, búsqueda de nombre) y Anthropic Claude Fable 5.1 (crítica de v1, recalibración, paper actual, implementación pilot-0.2 y documentación). El reparto de funciones es el que el autor registra de sus historiales de sesión. Los modelos no son autores: el planteamiento, cada decisión normativa, las clasificaciones y la decisión de publicar son del autor.
+Este trabajo se desarrolló mediante un proceso explícitamente multimodelo asistido por IA, declarado como parte del método: Google Gemini 3.6 Flash (revisión inicial de escalas y primer borrador), OpenAI GPT-5.6 Sol (crítica de v0, diseño del expediente y del primer índice 0–10, paper v1, primeras aplicaciones, búsqueda de nombre) y Anthropic Claude Fable 5.1 (crítica de v1, recalibración, paper actual, implementación pilot-0.2 y pilot-0.3 y documentación). El reparto de funciones es el que el autor registra de sus historiales de sesión. Los modelos no son autores: el planteamiento, cada decisión normativa, las clasificaciones y la decisión de publicar son del autor.
