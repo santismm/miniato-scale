@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.5 — 2026-09-12 — reglas `pilot-0.3` (versión de cierre)
+
+- Caso neerlandés: retirada la cota F ≤ 6 por alcance; F queda desconocido y el resultado es "≥ 5" con R {5,6} acreditado. Regla: una cota sobre un dominio desconocido exige una estimación documentada que cubra todos los componentes de L, incluida la restauración.
+- Ejemplo de R1 sustituido por uno que no altera ninguna decisión de prioridad, elegibilidad, precio o acceso.
+- Historial de versiones acortado en el paper; "rutas numéricas sin cambios" limitado a pilot-0.2 → pilot-0.3.
+- "Los ordinales no se pueden promediar" reformulado: la media no se interpreta como gravedad media por falta de intervalos iguales; retirada la frase "la sismología resolvió este problema".
+- INES: ni el nivel ni la bandera son por sí solos una regla de prioridad operativa.
+- Registros de casos: justificación por dominio, incluidos los no determinantes.
+- Detalle en `docs/decisiones.md` D21.
+
 ## v2.4 — 2026-09-12 — reglas `pilot-0.3` (tercera revisión externa)
 
 - **R1/R2**: la condición decisiva de R2 es que la decisión discriminatoria surtió efecto, con independencia de si fue automática o revisada y ratificada por una persona (P1: se clasifican consecuencias). R1 recibe un ejemplo positivo. Al cambiar un criterio de rúbrica, las reglas pasan de `pilot-0.2` a `pilot-0.3`; las rutas numéricas no cambian.

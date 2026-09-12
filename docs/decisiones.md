@@ -155,3 +155,17 @@ Registro de decisiones con las alternativas descartadas y el motivo. Formato bre
 - Identificador de reglas: al cambiar un criterio de rúbrica, `pilot-0.2` → `pilot-0.3`, en paper, código y documentación.
 - "Cuatro regiones": atribuido a OpenAI (26 ago), no a Hugging Face.
 - Resumen inglés: enumeración de resultados; resumen español: pérdida de control durante el incidente frente a contención en la fecha de corte.
+
+## D21. Versión de cierre v2.5
+
+**Contexto (12 sept 2026).** Cuarta revisión externa: favorable a publicar como propuesta metodológica tras correcciones acotadas.
+
+**Aplicado.**
+- Cota neerlandesa retirada. En D18 se había defendido F ∈ [0,6] por alcance documentado; la revisión señaló que esa cota no cubría todos los componentes de L (restauración incluida) y tenía razón. F queda desconocido y el caso se comunica como cota inferior 5. Se acepta que un ejemplo menos determinado refuerza la credibilidad de la regla de incertidumbre.
+- Ejemplo de R1: el ranking que retrasaba revisiones era una decisión de prioridad con efecto, es decir, R2. Sustituido por resúmenes estereotipados vistos por personal y corregidos sin afectar a ninguna decisión.
+- Historial: el paper explica la propuesta vigente y remite al changelog; la afirmación de rutas sin cambios se limita a pilot-0.2 → pilot-0.3.
+- Promedios: formulación precisa (sin intervalos iguales, la media no se interpreta como gravedad media); retirada la afirmación de que la sismología "resolvió" el problema.
+- Prioridad operativa: ni el nivel ni la bandera la determinan por sí solos.
+- Trazabilidad: `example_cases.json` incluye la justificación de cada dominio, también los no determinantes; el esquema del expediente lo exige.
+
+**No aplicado.** Nombre, arquitectura, regla del máximo, tarjeta y boletín se mantienen, como recomienda la propia revisión. Siguiente hito: aplicación por evaluadores ajenos al diseño, no otra versión del texto.

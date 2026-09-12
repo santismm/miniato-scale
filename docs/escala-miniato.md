@@ -106,7 +106,7 @@ Por periodo T (trimestre o año). Se cuentan solo los registros padre consolidad
 
 "Empeora" significa una de tres cosas, siempre con la advertencia de cobertura: sube N≥k para un k fijo; sube la proporción de registros de nivel 4 o superior, o se desplaza hacia arriba la distribución acumulada de niveles; sube la proporción de registros con bandera de control. La pendiente de log N≥k contra k, por analogía con Gutenberg–Richter, es solo un estadístico exploratorio: depende del espaciado numérico de categorías ordinales.
 
-Nunca se promedia la escala Miniato. Nunca se clasifica a organizaciones por número de incidentes reportados.
+La media de niveles Miniato no se interpreta como gravedad media, porque la escala no fija intervalos iguales entre categorías; el boletín usa recuentos de superación y distribuciones. Nunca se clasifica a organizaciones por número de incidentes reportados.
 
 ## 9. Correspondencia con el Reglamento de IA de la UE
 
@@ -120,7 +120,7 @@ Artículo 3(49), "incidente grave": (a) muerte o daño grave a la salud → Mini
 | Moffatt v. Air Canada, 2024 | 1 | E0/A1/C3 |
 | Detención errónea por reconocimiento facial, Detroit 2020 | 3 | E0/A1/C3 |
 | Atropello mortal de vehículo automatizado, Tempe 2018 | 4 | E0/A2/C3 |
-| Escándalo de ayudas a la infancia, Países Bajos 2013–2019 | {5, 6} (R determinante; F acotado en [0,6] por el alcance documentado) | E1/A1/C2 |
+| Escándalo de ayudas a la infancia, Países Bajos 2013–2019 | ≥ 5 (R {5,6} acreditado; F no establecido) | E1/A1/C2 |
 | Fuga multiagente e intrusión en terceros, 2026 | ≥ 2 [!] (O 2–3, R 1–2, F no establecido) | E4/A4/C3 |
 
 Clasificaciones del autor a partir de documentos públicos, provisionales hasta el estudio entre evaluadores. Los casos se eligieron para cubrir el rango: muestran que las reglas pueden producir dispersión, no que los incidentes reales se distribuyan así. Entre Tempe (4, sin bandera) y el caso de 2026 (≥ 2, con bandera) no puede establecerse un orden de gravedad con la evidencia disponible; lo que los distingue es la bandera, no el nivel.

@@ -1,14 +1,274 @@
 [
-  {"bounds": [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"], "evaluation_contained": true,
-   "metadata": {"id": "CASE-1", "description": "SYNTHETIC illustration, not a documented case: reward hacking inside an authorised evaluation", "E": 2, "A": 3, "C": 3}},
-  {"bounds": [[0,0],[0,0],[1,1],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"],
-   "metadata": {"id": "CASE-2", "description": "Moffatt v. Air Canada (2024 BCCRT 149)", "E": 0, "A": 1, "C": 3}},
-  {"bounds": [[0,0],[3,3],[0,1],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"],
-   "metadata": {"id": "CASE-3", "description": "Wrongful arrest from facial-recognition match, Detroit 2020", "E": 0, "A": 1, "C": 3}},
-  {"bounds": [[4,4],[0,0],[0,2],[0,0],[0,0],[0,0]], "terminal_candidates": ["none"],
-   "metadata": {"id": "CASE-4", "description": "Automated-driving fatality, Tempe 2018 (NTSB HAR-19/03)", "E": 0, "A": 2, "C": 3}},
-  {"bounds": [[0,2],[5,6],[0,6],[0,0],[0,0],[3,4]], "terminal_candidates": ["none"],
-   "metadata": {"id": "CASE-5", "description": "Dutch childcare-benefits scandal 2013-2019", "E": 1, "A": 1, "C": 2}},
-  {"bounds": [[0,0],[1,2],null,[2,3],[0,0],[0,1]], "terminal_candidates": ["none"], "effective_breach": true,
-   "metadata": {"id": "CASE-6", "description": "Multi-agent sandbox escape and third-party intrusion, 2026 (per public reports)", "E": 4, "A": 4, "C": 3}}
+ {
+  "bounds": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ]
+  ],
+  "terminal_candidates": [
+   "none"
+  ],
+  "evaluation_contained": true,
+  "metadata": {
+   "id": "CASE-1",
+   "description": "SYNTHETIC illustration, not a documented case: reward hacking inside an authorised evaluation",
+   "E": 2,
+   "A": 3,
+   "C": 3,
+   "domain_justification": {
+    "H": "no health effect",
+    "R": "no person affected",
+    "F": "no loss",
+    "O": "authorised perimeter not exceeded (Rule 2)",
+    "B": "none",
+    "S": "none"
+   }
+  }
+ },
+ {
+  "bounds": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ]
+  ],
+  "terminal_candidates": [
+   "none"
+  ],
+  "metadata": {
+   "id": "CASE-2",
+   "description": "Moffatt v. Air Canada (2024 BCCRT 149)",
+   "E": 0,
+   "A": 1,
+   "C": 3,
+   "domain_justification": {
+    "H": "none",
+    "R": "no rights effect beyond the contractual dispute",
+    "F": "F1: award of about 812 CAD, below theta/100",
+    "O": "none",
+    "B": "none",
+    "S": "none"
+   }
+  }
+ },
+ {
+  "bounds": [
+   [
+    0,
+    0
+   ],
+   [
+    3,
+    3
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ]
+  ],
+  "terminal_candidates": [
+   "none"
+  ],
+  "metadata": {
+   "id": "CASE-3",
+   "description": "Wrongful arrest from facial-recognition match, Detroit 2020",
+   "E": 0,
+   "A": 1,
+   "C": 3,
+   "domain_justification": {
+    "H": "no injury reported",
+    "R": "R3: deprivation of liberty of one person, about 30 hours",
+    "F": "[0,1]: no loss figure; bounded by the scale of one detention and a settlement is remediation",
+    "O": "none",
+    "B": "none",
+    "S": "none"
+   }
+  }
+ },
+ {
+  "bounds": [
+   [
+    4,
+    4
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ]
+  ],
+  "terminal_candidates": [
+   "none"
+  ],
+  "metadata": {
+   "id": "CASE-4",
+   "description": "Automated-driving fatality, Tempe 2018 (NTSB HAR-19/03)",
+   "E": 0,
+   "A": 2,
+   "C": 3,
+   "domain_justification": {
+    "H": "H4: one death (U = 1); no other harm units reported",
+    "R": "none",
+    "F": "[0,2]: vehicle and civil settlement; no figure establishing theta/10 or more",
+    "O": "none",
+    "B": "none",
+    "S": "none"
+   }
+  }
+ },
+ {
+  "bounds": [
+   [
+    0,
+    2
+   ],
+   [
+    5,
+    6
+   ],
+   null,
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "terminal_candidates": [
+   "none"
+  ],
+  "metadata": {
+   "id": "CASE-5",
+   "description": "Dutch childcare-benefits scandal 2013-2019; F unknown, classification is a lower bound of 5",
+   "E": 1,
+   "A": 1,
+   "C": 2,
+   "domain_justification": {
+    "H": "[0,2]: health effects reported in inquiries but not quantified as serious permanent injury",
+    "R": "{5,6}: tens of thousands of families wrongly pursued with loss of livelihoods, custody in some cases",
+    "F": "unknown: amounts demanded are not realised losses; no estimate of full loss including restoration available",
+    "O": "none",
+    "B": "none",
+    "S": "[3,4]: national administration compromised; government resigned"
+   }
+  }
+ },
+ {
+  "bounds": [
+   [
+    0,
+    0
+   ],
+   [
+    1,
+    2
+   ],
+   null,
+   [
+    2,
+    3
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ]
+  ],
+  "terminal_candidates": [
+   "none"
+  ],
+  "effective_breach": true,
+  "metadata": {
+   "id": "CASE-6",
+   "description": "Multi-agent sandbox escape and third-party intrusion, 2026 (per public reports)",
+   "E": 4,
+   "A": 4,
+   "C": 3,
+   "domain_justification": {
+    "H": "none reported in sources examined",
+    "R": "[1,2]: fourteen exposed user credentials used; five datasets accessed",
+    "F": "unknown: no loss figure published; absence of a figure is not a bound",
+    "O": "[2,3]: effective breach, admin access, internal outage",
+    "B": "none",
+    "S": "[0,1]: no societal effect substantiated"
+   }
+  }
+ }
 ]
