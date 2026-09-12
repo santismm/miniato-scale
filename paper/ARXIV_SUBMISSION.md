@@ -5,7 +5,7 @@ Submission draft already created on arXiv: **8070629** (resume from https://arxi
 ## 1. Endorsement (blocking)
 
 1. Log in and open: https://arxiv.org/auth/need-endorsement.php?category_id=cs.AI
-2. arXiv shows a six-character **endorsement code** and the endorser's instructions. Send the message below to one endorser. Candidates with recent cs.AI/cs.LG papers on arXiv from your LinkedIn network: Nayat Sanchez-Pi (Inria Chile; closest to the topic), Edoardo Cetin (Sakana AI), Fernando Castañeda García-Rozas (Nvidia). Only people who have authored several recent cs papers can endorse; arXiv tells them on the endorsement page whether they qualify.
+2. arXiv shows a six-character **endorsement code** and the endorser's instructions. Send the message below to one endorser. Candidates with recent cs.AI/cs.LG papers on arXiv from your LinkedIn network: Nayat Sanchez-Pi (Inria Chile; closest to the topic), Edoardo Cetin (Sakana AI), Fernando Castañeda García-Rozas (Nvidia). arXiv's rule for cs.AI (checked 12 Sept 2026): the endorser must have submitted 3 papers to any cs.* subject class between three months and five years ago. Any of the candidates above with recent cs.LG/cs.AI/cs.RO papers should qualify; arXiv confirms it on the endorsement page. The code was also e-mailed to santismm@gmail.com; forwarding that e-mail is enough.
 
 ### Message to the endorser (English)
 
@@ -15,8 +15,8 @@ Dear [Name],
 
 I am about to submit my first arXiv preprint and need an endorsement for cs.AI. The paper proposes the Miniato Scale, an eleven-level ordinal severity scale for AI incidents, with a public card, a bulletin for trends, a reference implementation and a validation programme. It is a methodological proposal, not a validated standard, and it says so.
 
-arXiv's endorsement code is: [CODE]
-Endorsement page: https://arxiv.org/auth/endorse?x=[CODE]
+arXiv's endorsement code is: GQXIPU
+Endorsement page: https://arxiv.org/auth/endorse?x=GQXIPU
 Preprint PDF and code: https://github.com/santismm/miniato-scale (paper/main.pdf)
 
 Endorsing only confirms that the work is appropriate for arXiv; it is not a review and does not imply agreement. If you would rather not, no problem at all.
@@ -33,8 +33,8 @@ Hola [Nombre],
 
 Voy a enviar mi primer preprint a arXiv y necesito un aval (endorsement) para cs.AI. El artículo propone la escala Miniato, una escala ordinal de once niveles para la gravedad de incidentes de IA, con una tarjeta pública, un boletín para tendencias, una implementación de referencia y un programa de validación. Es una propuesta metodológica, no un estándar validado, y así lo dice.
 
-Código de aval de arXiv: [CODE]
-Página de aval: https://arxiv.org/auth/endorse?x=[CODE]
+Código de aval de arXiv: GQXIPU
+Página de aval: https://arxiv.org/auth/endorse?x=GQXIPU
 PDF y código: https://github.com/santismm/miniato-scale (paper/main.pdf)
 
 El aval solo confirma que el trabajo encaja en arXiv; no es una revisión ni implica acuerdo. Si prefieres no hacerlo, ningún problema.
